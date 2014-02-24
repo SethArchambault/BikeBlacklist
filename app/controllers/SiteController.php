@@ -53,12 +53,27 @@ class SiteController extends \BaseController {
 
         public function email() 
         {
-                Mail::send('emails.found_bike', ['content', Input::get('content')], function($message)
+                // need bike id
+                $bike = Bike::find(Input::get('bike_id'));
+                $bike_id = $bike->id;
+                $data['bike_owner_email'] = $bike->email;
+                $data['content'] = Input::get('content');
+
+                // send message to bike owner
+                Mail::send('emails.found_bike', $data, function($message) use ($data)
                 {
-                        $message->to('spam@seth.doercreator.com', 'Seth Archambault')->subject('Found your bike Seth!');
+                        $message->to($data['bike_owner_email'])->subject('Found your bike!');
                 });
+
+                // send message to admin
+                Mail::send('emails.found_bike_admin', $data, function($message)
+                {
+                        $message->to('detroitbikeblacklist@seth.doercreator.com', 'Seth Archambault')->subject('Blikelist - Found Bike');
+                });
+
+                // send message to bike owner
         
-                return Redirect::route('site.bikes')->with('message', 'Email Sent!');
+                return Redirect::route('site.bikes')->with('message', 'Email Sent! An email has been sent to the rightful owner of the bike - thanks so much!');
         }
 
         public function feedback() 

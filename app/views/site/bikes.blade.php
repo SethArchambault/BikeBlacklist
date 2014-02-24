@@ -26,7 +26,7 @@
 					  <div class="caption">
 					    <p>{{ date('l,', strtotime($bike->lost_date)) }} <b>{{ date('F jS', strtotime($bike->lost_date)) }}</b> {{ date('Y', strtotime($bike->lost_date)) }}</p>
 					    <p>{{ $bike->description }}</p>
-		    		    <p><a href="#" class="btn btn-primary btn-lg" data-dismiss="modal" data-toggle="modal" data-target="#foundItModal" role="button">I Found It!</a> </p>
+		    		    <p><a href="#" class="btn btn-primary btn-lg foundItButtonJS" data-dismiss="modal" data-bike-id="{{ $bike->id }}" data-toggle="modal" data-target="#foundItModal" role="button">I Found It!</a> </p>
 
 					  </div>
 					</div>
@@ -50,5 +50,16 @@
 		$('#photo').change(function(){
 			$('#subfile').val($(this).val());
 		});
+
+		$('.foundItButtonJS').click(function(e){
+			e.preventDefault();
+			var bike_id = $(this).attr('data-bike-id');
+			$('#bikeIdInput').val(bike_id);
+		});
+
+
+
+
+
 	</script>
 @stop

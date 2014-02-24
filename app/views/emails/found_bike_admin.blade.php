@@ -1,5 +1,9 @@
-<p>Hey there, this is Seth from Detroit Bike Blacklist - someone found your bike!<br>...well hopefully. They've sent you this message:</p>
-<p style="font-size:20px; color:#888; letter-spacing:1px;"><b>MESSAGE</b></p>
+<p style="border-bottom:1px solid #ccc;">Emailed to: {{ $bike_owner_email }}</p>
+
+
+
+<p>Hey there, this is Seth from Detroit Bike Blacklist - someone found your bike!<br>...well hopefully. They've sent you a message.</p>
+<p style="font-size:16px;"><b>MESSAGE</b></p>
 <p style="padding:15px 0 15px 15px; border-left:1px solid #ccc; font-style=italic;">
 {{ $content }}
 </p>
