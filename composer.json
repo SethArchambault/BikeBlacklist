@@ -8,7 +8,8 @@
         "cartalyst/sentry": "2.0.*",
         "dflydev/markdown": "v1.0.2",
         "imagine/Imagine": "v0.4.1",
-        "intervention/image": "dev-master"
+        "intervention/image": "dev-master",
+        "RobBrazier/Piwik": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
