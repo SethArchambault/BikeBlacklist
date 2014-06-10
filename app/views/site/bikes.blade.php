@@ -6,12 +6,8 @@
 		@include('site._partials.flash_message')
 	
 		<div class="jumbotron">
-<<<<<<< HEAD
-	 	  <h1 class="text-center"><a href="/"><img src="/blikelist_logo.png"></a></h1>
-=======
 	 	  <h1 class="text-center"><a href="/">Detroit Bike Blacklist</a>
 </h1>
->>>>>>> origin/stage
 		  <p class="text-center" style="padding-bottom:50px;"><a class="btn btn-large btn-primary" href="/my-bike-is-missing"><b>My Bike is Missing!</b></a></p>
 			@if (count($bikes) > 0)
 				<p>Here are all the bikes that have gone missing in Detroit!</p>
