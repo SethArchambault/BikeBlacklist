@@ -8,6 +8,7 @@
 		<div class="jumbotron">
 	 	  <h1 class="text-center"><a href="/">Detroit Bike Blacklist</a>
 </h1>
+		  <p>Hey, this site isn't working yet.  </p>
 		  <p class="text-center" style="padding-bottom:50px;"><a class="btn btn-large btn-primary" href="/my-bike-is-missing"><b>My Bike is Missing!</b></a></p>
 			@if (count($bikes) > 0)
 				<p>Here are all the bikes that have gone missing in Detroit!</p>
