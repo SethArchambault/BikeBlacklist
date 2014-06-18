@@ -26,13 +26,17 @@ Route::get('/my-bike-is-missing', array('as' => 'site.my_bike_is_missing', 'uses
 Route::post('/store', array('as' => 'site.store', 'uses' => 'App\Controllers\SiteController@store'));
 
 
-Route::get('admin/logout', array('as' => 'admin.logout', 'uses' => 'App\Controllers\Admin\AuthController@getLogout'));
-Route::get('admin/login', array('as' => 'admin.login', 'uses' => 'App\Controllers\Admin\AuthController@getLogin'));
-Route::post('admin/login', array('as' => 'admin.login.post', 'uses' => 'App\Controllers\Admin\AuthController@postLogin'));
+Route::get('admin', 'AdminController@index');
+Route::get('admin/edit/{id}', 'AdminController@edit');
+Route::post('admin/update/{id}', 'AdminController@update');
 
-Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
-{
-        Route::any('/', 'App\Controllers\Admin\BikesController@index');
-        Route::resource('articles', 'App\Controllers\Admin\ArticlesController');
-        Route::resource('bikes', 'App\Controllers\Admin\BikesController');
-});
+// Route::get('admin/logout', array('as' => 'admin.logout', 'uses' => 'App\Controllers\Admin\AuthController@getLogout'));
+// Route::get('admin/login', array('as' => 'admin.login', 'uses' => 'App\Controllers\Admin\AuthController@getLogin'));
+// Route::post('admin/login', array('as' => 'admin.login.post', 'uses' => 'App\Controllers\Admin\AuthController@postLogin'));
+
+// Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
+// {
+//         Route::any('/', 'App\Controllers\Admin\BikesController@index');
+//         Route::resource('articles', 'App\Controllers\Admin\ArticlesController');
+//         Route::resource('bikes', 'App\Controllers\Admin\BikesController');
+// });
