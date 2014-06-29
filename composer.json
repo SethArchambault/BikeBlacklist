@@ -1,40 +1,43 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
-	"license": "MIT",
-	"require": {
-		"laravel/framework": "4.1.*",
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "require": {
+        "laravel/framework": "4.2.*",
         "cartalyst/sentry": "2.0.*",
         "dflydev/markdown": "v1.0.2",
         "imagine/Imagine": "v0.4.1",
-        "intervention/image": "dev-master",
-        "RobBrazier/Piwik": "dev-master"
-	},
-	"autoload": {
-		"classmap": [
-			"app/commands",
-			"app/controllers",
-			"app/models",
-			"app/database/migrations",
-			"app/database/seeds",
-			"app/tests/TestCase.php"
-		]
-	},
-	"scripts": {
-		"post-install-cmd": [
-			"php artisan optimize"
-		],
-		"post-update-cmd": [
-			"php artisan clear-compiled",
-			"php artisan optimize"
-		],
-		"post-create-project-cmd": [
-			"php artisan key:generate"
-		]
-	},
-	"config": {
-		"preferred-install": "dist"
-	},
-	"minimum-stability": "dev"
+        "intervention/image": "2.*",
+        "RobBrazier/Piwik": "dev-master",
+        "barryvdh/laravel-ide-helper": "1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "app/commands",
+            "app/controllers",
+            "app/models",
+            "app/database/migrations",
+            "app/database/seeds",
+            "app/tests/TestCase.php",
+            "app/libraries"
+        ]
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize",
+            "php artisan ide-helper:generate"
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev"
 }

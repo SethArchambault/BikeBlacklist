@@ -34,17 +34,12 @@
 			<div class="col-sm-8">
 				<h1>{{ date($date_format, strtotime($bike->lost_date)) }}</h1>
 				<p>{{ $bike->description }}</p>
-		      	<div style="padding-bottom:10px;"><img src="{{ $bike->photo }}" width="100%"></div>
+		      	<div style="padding-bottom:10px;"><img src="/uploads/large/{{ $bike->photo }}" width="100%"></div>
 			    <a href="#">Report this image</a>
 			</div>
 			<div class="col-sm-4">
-			    <h3>Short Link</h3>
-			    <div>http://blikelist.com/{{ $bike->bike_uid }}</div>
-			    <p>Share this link</p>
-			    <h3>Admin Controls</h3>
-			    <p><a href="/delete/{{ $bike->id }}">Delete Bike </a></p>
-			    <p><a href="/found/{{ $bike->found_key }}">Found Bike </a>
-			    <p><a href="/lost/{{ $bike->id }}">Lost Bike </a>
+                <p>Share this link</p>
+                <div>http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}</div>
 			    <p><a href="#" class="btn btn-primary btn-lg" data-dismiss="modal" data-toggle="modal" data-target="#foundItModal" role="button">I Found It!</a> </p>
 
 				

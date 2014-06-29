@@ -4,21 +4,23 @@
 	<div class="container">
 
 		@include('site._partials.flash_message')
-	
-		<div class="jumbotron">
-	 	  <h1 class="text-center"><a href="/">Detroit Bike Blacklist</a>
-</h1>
-		  <p>Hey, this site isn't working yet.  </p>
-		  <p class="text-center" style="padding-bottom:50px;"><a class="btn btn-large btn-primary" href="/my-bike-is-missing"><b>My Bike is Missing!</b></a></p>
+		
+		<div class="text-center">
+			<a href="/" class=""><img style="max-width:100%;" src="/images/bike_blacklist_logo_right_v2.png"></a><br>
+			<a href="/" class=""><img style="max-width:100%;" src="/images/bike_blacklist_logo_left_v2.png"></a>
+		</div>
+        
+        <p>I'm working on this site as we speak. It will be ready to be used on July 30th 2014 (my Detroit-iversery)</p>
+
+		  <p class="text-center" style="padding-bottom:50px;"><a class="btn btn-large" style="font-size:30px;" href="/my-bike-is-missing"><b>My Bike is Missing!</b></a></p>
 			@if (count($bikes) > 0)
 				<p>Here are all the bikes that have gone missing in Detroit!</p>
 				<p>If you spot one of these, or (gulp) buy one of these - please click "I found it!"</p>
+				<hr>
 			@else
-				<p>There are no missing bikes in Detroit at the moment! ...really?</p>
+				<div class="alert alert-info" role="alert">There are no missing bikes in Detroit at the moment!<br>...really?</div>
 			@endif
-		</div>
 
-		<hr>
 		<div class="row">
 		<?php
 		$last_year = "";
@@ -37,7 +39,7 @@
 					<div class="thumbnail">
 						<div style="width:300px; height:200px; overflow:hidden;">
 						  	<div style="margin-left:0px; margin-top:-70px;">
-							 	<a href="/bike/{{ $bike->bike_uid }}"><img src="{{ $bike->photo }}" width=300 alt="..."></a>
+							 	<a href="/bike/{{ $bike->bike_uid }}"><img src="/uploads/thumb/{{ $bike->photo }}" width="100%"alt="..."></a>
 							</div>
 						</div>
 					  <div class="caption">

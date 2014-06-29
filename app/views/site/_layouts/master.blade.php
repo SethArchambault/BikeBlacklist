@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>BlikeList - Detroit Bike Blacklist</title>
+	<title>Detroit Bike Blacklist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
 		      <span class="icon-bar"></span>
 		      <span class="icon-bar"></span>
 		    </button>
-		    <a class="navbar-brand" href="/">Detroit Bike Blacklist</a>
+		    <a class="navbar-brand" href="/"></a>
 		  </div>
 
 		  <!-- Collect the nav links, forms, and other content for toggling -->

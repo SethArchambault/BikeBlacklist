@@ -98,8 +98,8 @@ $.fn.bootstrapFileInput = function() {
         //$(this).parent().after('<span class="file-input-name">'+$(this)[0].files.length+' files</span>');
       }
       else {
-        // var fakepath = 'C:\\fakepath\\';
-        // fileName = $(this).val().replace('C:\\fakepath\\','');
+        var fakepath = 'C:\\fakepath\\';
+        fileName = $(this).val().replace('C:\\fakepath\\','');
         fileName = fileName.substring(fileName.lastIndexOf('\\')+1,fileName.length);
       }
 

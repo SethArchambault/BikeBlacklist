@@ -1,8 +1,8 @@
 <?php namespace App\Controllers;
  
 use App\Models\Bike;
+use Helper\Helper;
 use Input, Redirect, Config, View;
-use Intervention\Image\Image;
 use Illuminate\Queue\Queue;
 use Mail;
 use Log;
@@ -47,12 +47,6 @@ class SiteController extends \BaseController {
                 return View::make('site.my_bike_is_missing');
         }
 
-        public function delete($bike_id)
-        {
-                Bike::find($bike_id)->delete();
-                return Redirect::route('site.bikes')->with('message', 'Bike Deleted!');
-        }
-
         public function found($found_key)
         {
                 $bike = Bike::where('found_key', $found_key)->first();
@@ -67,86 +61,65 @@ class SiteController extends \BaseController {
                 return Redirect::route('site.bikes')->with('message', "Couldn't find that bike. Seth will look into this.");                
         }
 
-        public function lost($bike_id)
-        {
-                $bike = Bike::find($bike_id);
-                $bike->status = 0;
-                $bike->save();
-                return Redirect::route('site.bikes')->with('message', 'Bike Lost!');
-        }
 
-        public function test() 
-        {
-                die("test");
-        }
 
         public function store()
         {
-                // input
-                $description = Input::get('description');
-                $lost_date = Input::get('lost_date');
 
-                // photo
-                $file = Input::file('photo');
-                $filename = $file->getClientOriginalName();
-                //->resize(750, null, true)
-                die(var_dump($file));
-                // die(var_dump(Image::make($file)));
-                //->move(Config::get('app.file_dir'));
-                //, date("Y-m-d_H-i_") . $filename)->save($filename);
-                // $resized_image_file = Image::make(Input::file('photo')->getRealPath())->move(Config::get('app.file_dir'), date("Y-m-d_H-i_") . $filename);
-                //->save($filename);
-                // $file_path = "/" . $resized_image_file->move(Config::get('app.file_dir'), date("Y-m-d_H-i_") . $filename);
 
-                // build unique id
-                $desc_words= explode(" ", $description, 4);
-                $bike_uid = implode("-", array_splice($desc_words, 0, 3));
-                $bike_uid = strtolower($bike_uid);
+            // input
+            $description = Input::get('description');
+            $lost_date = Input::get('lost_date');
 
-                // check to see if this unique Id exists
-                if (Bike::where('bike_uid', $bike_uid)->exists())
+
+            $photo_filename = Helper::SaveBikePhoto(Input::file('photo'), Config::get('app.file_dir'));
+            // build unique id
+            $desc_words= explode(" ", $description, 4);
+            $bike_uid = implode("-", array_splice($desc_words, 0, 3));
+            $bike_uid = strtolower($bike_uid);
+
+            // check to see if this unique Id exists
+            if (Bike::where('bike_uid', $bike_uid)->exists())
+            {
+                // add date
+                Log::info("SiteController.php - function store() - Bike with bike_uid '$bike_uid' already exists, we've got to create a unique by adding more info");
+                $bike_uid .= date('-m-d', strtotime($lost_date));
+                while (Bike::where('bike_uid', $bike_uid)->exists())
                 {
-                        // add date
-                        Log::info("SiteController.php - function store() - Bike with bike_uid '$bike_uid' already exists, we've got to create a unique by adding more info");
-                        $bike_uid .= date('-m-d', strtotime($lost_date));
-                        while (Bike::where('bike_uid', $bike_uid)->exists()) 
-                        {
-                                Log::info("SiteController.php - function store() - Bike with bike_uid '$bike_uid' already exists, we've got to create a unique id with a random string then.");
-                                $bike_uid = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 1).substr(md5(time()),1,8);
-                        }
-                        Log::info("SiteController.php - function store() - Successfully created bike_uid '$bike_uid'");
-
+                        Log::info("SiteController.php - function store() - Bike with bike_uid '$bike_uid' already exists, we've got to create a unique id with a random string then.");
+                        $bike_uid = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 1).substr(md5(time()),1,8);
                 }
+                Log::info("SiteController.php - function store() - Successfully created bike_uid '$bike_uid'");
+            }
 
-                $bike = new Bike;
-                $bike->description = $description;
-                $bike->lost_date = date('Y-m-d', strtotime($lost_date));
-                $bike->photo = $file_path;
-                $bike->email = Input::get('email');
-                $bike->status = 0;
-                $bike->bike_uid = $bike_uid;
-                $bike->found_key = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 1).substr(md5(time()),1);
-                $bike->save();
- 
-                // send welcome email
+            $bike = new Bike;
+            $bike->description = $description;
+            $bike->lost_date = date('Y-m-d', strtotime($lost_date));
+            $bike->photo = $photo_filename;
+            $bike->email = Input::get('email');
+            $bike->status = 0;
+            $bike->bike_uid = $bike_uid;
+            $bike->found_key = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 1).substr(md5(time()),1);
+            $bike->save();
 
-                $data['bike_owner_email'] = $bike->email;
-                // $data['url'] = "http://blikelist.com/"
-                $data['url'] = "http://detroitbikeblacklist.com/bike/". $bike->bike_uid;
+            // send welcome email
 
-                // send message to bike owner
-                Mail::send('emails.hello', $data, function($message) use ($data)
-                {
-                        $message->to($data['bike_owner_email'])->subject('Sadface');
-                });
+            $data['bike_owner_email'] = $bike->email;
+            $data['url'] = "http://detroitbikeblacklist.com/bike/". $bike->bike_uid;
 
-                // send message to admin
-                Mail::send('emails.hello_admin', $data, function($message)
-                {
-                        $message->to('detroitbikeblacklist@seth.doercreator.com', 'Seth Archambault')->subject('Blikelist - Missing Bike Reported');
-                });
+            // send message to bike owner
+            Mail::send('emails.hello', $data, function($message) use ($data)
+            {
+                    $message->to($data['bike_owner_email'])->subject('Sadface');
+            });
 
-                return Redirect::route('bike', [$bike->bike_uid])->with('message', "Thanks for reporting your bike!");
+            // send message to admin
+            Mail::send('emails.hello_admin', $data, function($message)
+            {
+                    $message->to('detroitbikeblacklist@seth.doercreator.com', 'Seth Archambault')->subject('Blikelist - Missing Bike Reported');
+            });
+
+            return Redirect::to('/bike/' . $bike->bike_uid)->with('message', "Thanks for reporting your bike!");
         }
 
         public function email() 

@@ -11,32 +11,36 @@
 |
 */
 
+App::missing(function($exception)
+{
+    return Response::view('errors.missing', array(), 404);
+});
 
 Route::get('/', array('as' => 'site.bikes', 'uses' => 'App\Controllers\SiteController@bikes'));
-Route::get('/delete/{bike_id}', array('as' => 'site.delete', 'uses' => 'App\Controllers\SiteController@delete'));
 Route::get('/found/{bike_id}', array('as' => 'site.found', 'uses' => 'App\Controllers\SiteController@found'));
-Route::get('/lost/{bike_id}', array('as' => 'site.lost', 'uses' => 'App\Controllers\SiteController@lost'));
 Route::get('/bike/{bike_uid}', array('as' => 'site.bike', 'uses' => 'App\Controllers\SiteController@bike'));
 Route::post('/email', ['as' => 'site.email', 'uses' => 'App\Controllers\SiteController@email']);
 Route::post('/feedback', ['as' => 'site.feedback', 'uses' => 'App\Controllers\SiteController@feedback']);
 
-Route::get('/test', ['uses' => 'App\Controllers\SiteController@test']);
-
 Route::get('/my-bike-is-missing', array('as' => 'site.my_bike_is_missing', 'uses' => 'App\Controllers\SiteController@my_bike_is_missing'));
 Route::post('/store', array('as' => 'site.store', 'uses' => 'App\Controllers\SiteController@store'));
 
+Route::get('/login/', ['before' => '', 'uses' => 'AdminController@login']);
 
-Route::get('admin', 'AdminController@index');
-Route::get('admin/edit/{id}', 'AdminController@edit');
-Route::post('admin/update/{id}', 'AdminController@update');
-
-// Route::get('admin/logout', array('as' => 'admin.logout', 'uses' => 'App\Controllers\Admin\AuthController@getLogout'));
-// Route::get('admin/login', array('as' => 'admin.login', 'uses' => 'App\Controllers\Admin\AuthController@getLogin'));
-// Route::post('admin/login', array('as' => 'admin.login.post', 'uses' => 'App\Controllers\Admin\AuthController@postLogin'));
-
-// Route::group(array('prefix' => 'admin', 'before' => 'auth.admin'), function()
-// {
-//         Route::any('/', 'App\Controllers\Admin\BikesController@index');
-//         Route::resource('articles', 'App\Controllers\Admin\ArticlesController');
-//         Route::resource('bikes', 'App\Controllers\Admin\BikesController');
-// });
+Route::group(['prefix' => 'admin', 'before' => 'auth'], function() 
+{
+	Route::get('logout/', ['uses' => 'AdminController@logout']);
+	Route::post('check_login', ['uses' => 'AdminController@check_login']);
+	Route::get('/', ['uses' => 'AdminController@bike_index']);
+	Route::get('bike_index', ['uses' => 'AdminController@bike_index']);
+	Route::get('bike_edit/{id}', ['uses' => 'AdminController@bike_edit']);
+    Route::get('bike_delete/{id}', ['uses' => 'AdminController@bike_delete']);
+    Route::post('bike_update/{id}', ['uses' => 'AdminController@bike_update']);
+    Route::get('bike_lost/{id}', ['users' => 'AdminController@bike_lost']);
+	Route::get('user_index', ['uses' => 'AdminController@user_index']);
+	Route::get('user_create', ['uses' => 'AdminController@user_create']);
+	Route::get('user_delete/{id}', ['uses' => 'AdminController@user_delete']);
+	Route::post('user_store', ['uses' => 'AdminController@user_store']);
+	Route::get('image_resizing', ['uses' => 'AdminController@image_resizing']);
+	Route::post('image_resizing', ['uses' => 'AdminController@image_resizing_post']);
+});
