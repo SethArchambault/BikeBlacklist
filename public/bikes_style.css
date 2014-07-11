@@ -1,0 +1,60 @@
+.div-bike {
+    background: #ededed;
+    border-radius: 5px;
+    overflow:hidden;
+    margin-bottom: 30px;
+}
+
+.div-bike a {
+    text-decoration: none;
+}
+
+/*
+.div-bike:hover {
+    box-shadow: 0px 3px 0px rgba(0,0,0,0.5);
+}
+*/
+
+.div-bike .date {
+    color:#404040;
+    padding:5px 0 0 0;
+}
+
+.div-bike .description {
+    color:#707070;
+    padding: 0 8px;
+    height: 55px;
+}
+
+.btn-i-found-it {
+    color:#ffffff;
+    background:#5989ff;
+    font-weight: 700;
+    padding: 5px 0;
+}
+
+.btn-i-found-it:hover {
+    background:#335096;
+    color:#ffffff;
+}
+
+.btn-bike-found {
+    color:#ffffff;
+    background:#f44302;
+    font-weight: 700;
+    padding: 10px 0;
+}
+.btn-bike-found:hover {
+    background: #d23d06;
+    color:#ffffff;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 48px;
+    }
+}

@@ -1,0 +1,112 @@
+
+/* Google Font: Lato font-weight available: 400,700,900 */
+body {
+	font-family:Lato, sans-serif;
+	font-weight:400;
+	-webkit-font-smoothing: antialiased; 
+    color: #696969;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family:Lato, sans-serif;
+	font-weight:700;	
+	color: #555555;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1em;
+}
+
+p {
+    font-size:18px;
+}
+
+label {
+    font-size: 27px;
+    color:#363636;
+}
+
+.btn-primary
+{
+    background:#5989ff;
+    font-weight: 700;
+    border:none;
+}
+.btn-primary:hover
+{
+    background:#335096;
+}
+
+/* HEADER */
+
+.navbar {
+	border: none;
+}
+
+.navbar-default {
+	background:#f5f5f5;	
+}
+
+.navbar-nav>li {
+    padding-left:7px;
+}
+
+.navbar-default .navbar-brand {
+	padding-top:37px;
+	padding-bottom: 37px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color:#696969;
+}
+.navbar-default .navbar-nav>li>a:hover {
+	color:#434343;
+}
+
+.li-missing-bike {
+    padding-top:10px;
+    padding-left:10px;
+}
+
+.navbar-default .navbar-nav>li>a.btn-missing-bike {
+    padding:5px 15px;
+    background:#5989ff;
+    color:#ffffff;
+    display:block;
+    border-radius: 3px;
+    font-weight: 700;
+}
+.navbar-default .navbar-nav>li>a.btn-missing-bike:hover {
+    background:#335096;
+    color:#ffffff;
+
+}
+
+/* for the scrunchy button */
+.navbar-default .navbar-toggle {
+	margin-top:42px;
+}
+
+@media (min-width: 768px) {
+	.navbar-default .navbar-collapse {
+		padding-top:37px;
+	}
+}
+
+
+
+/* HOME */
+
+.subtext {
+	color:#7d7d7d;
+	font-size:15px;
+	padding-bottom: 15px;
+}
+
+@media (min-width: 768px) {
+    .subtext {
+        font-size:23px;
+    }
+}

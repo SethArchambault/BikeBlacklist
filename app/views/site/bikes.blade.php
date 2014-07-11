@@ -1,60 +1,45 @@
 @extends('site._layouts.master')
 
+@section('header')
+<link rel="stylesheet" type="text/css" href="/bikes_style.css">
+@stop
+
 @section('main')
 	<div class="container">
 
 		@include('site._partials.flash_message')
-		
-		<div class="text-center">
-			<a href="/" class=""><img style="max-width:100%;" src="/images/bike_blacklist_logo_right_v2.png"></a><br>
-			<a href="/" class=""><img style="max-width:100%;" src="/images/bike_blacklist_logo_left_v2.png"></a>
-		</div>
-        
-        <p>I'm working on this site as we speak. It will be ready to be used on July 30th 2014 (my Detroit-iversery)</p>
+		<div class="subtext col-sm-12 text-center">
+            <h1>Good Bike, Go Home</h1>
+            These are all the bikes missing in Detroit.<br>
+            If you find one or (ugh) buy one click “I FOUND IT” <br>
+            to send the owner a message
+        </div>
 
-		  <p class="text-center" style="padding-bottom:50px;"><a class="btn btn-large" style="font-size:30px;" href="/my-bike-is-missing"><b>My Bike is Missing!</b></a></p>
+        <div class="alert alert-info">I'm working on this site as we speak. It will be ready to be used on July 30th 2014 (my Detroit-iversery)</div>
+
 			@if (count($bikes) > 0)
-				<p>Here are all the bikes that have gone missing in Detroit!</p>
-				<p>If you spot one of these, or (gulp) buy one of these - please click "I found it!"</p>
-				<hr>
 			@else
 				<div class="alert alert-info" role="alert">There are no missing bikes in Detroit at the moment!<br>...really?</div>
 			@endif
 
 		<div class="row">
-		<?php
-		$last_year = "";
-		?>
             @foreach ($bikes as $bike)
-            <?php /*
-    			@if ($last_year != "" && $last_year != date('Y', strtotime($bike->lost_date)))
-		            </div>
-		            <div class="row">
-						<div class="col-xs-12">
-				            <h1 style="color:#ccc;">{{ date('Y', strtotime($bike->lost_date)) }}</h1>
-				        </div>
-	            @endif
-	            */ ?>
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<div style="width:300px; height:200px; overflow:hidden;">
-						  	<div style="margin-left:0px; margin-top:-70px;">
-							 	<a href="/bike/{{ $bike->bike_uid }}"><img src="/uploads/thumb/{{ $bike->photo }}" width="100%"alt="..."></a>
-							</div>
-						</div>
-					  <div class="caption">
-					    <p>{{ date('l,', strtotime($bike->lost_date)) }} <b>{{ date('F jS', strtotime($bike->lost_date)) }}</b> {{ date('Y') == date('Y', strtotime($bike->lost_date)) ? "" : date('Y', strtotime($bike->lost_date)) }}</p>
-					    <p>{{ $bike->description }}</p>
+
+				<div class="col-sm-4 col-md-3">
+                    <div class="div-bike">
+					<a href="/bike/{{ $bike->bike_uid }}">
+                        <img src="/uploads/thumb/{{ $bike->photo }}" width="100%"alt="">
+                        <div class="text-center date">{{ date('l,', strtotime($bike->lost_date)) }} {{ date('F jS', strtotime($bike->lost_date)) }} {{ date('Y') == date('Y', strtotime($bike->lost_date)) ? "" : date('Y', strtotime($bike->lost_date)) }}</div>
+                        <div class="description">{{ $bike->description }}</div>
+                    </a>
 					    @if($bike->status == 0)
-		    		    <p><a href="#" class="btn btn-primary btn-lg foundItButtonJS" data-dismiss="modal" data-bike-uid="{{ $bike->bike_uid }}" data-toggle="modal" data-target="#foundItModal" role="button">I Found It!</a> </p>
+		    		    <a href="#" class="btn-i-found-it btn-block text-center foundItButtonJS" data-dismiss="modal" data-bike-uid="{{ $bike->bike_uid }}" data-toggle="modal" data-target="#foundItModal" role="button">I FOUND IT</a>
 		    		    @elseif($bike->status == 1)
-		    		    <p><a href="/bike/{{ $bike->bike_uid }}" class="btn btn-success btn-lg" role="button">Bike Found!</a> </p>
+		    		    <a href="/bike/{{ $bike->bike_uid }}" class="btn-bike-found btn-block text-center" role="button">BIKE WAS FOUND</a>
 		    		    @endif
-					  </div>
-					</div>
+                    </div>
 				</div>
 				<?php
-				$last_year = date('Y', strtotime($bike->lost_date));
 				?>
 			@endforeach
 		</div>
@@ -88,3 +73,17 @@
 
 	</script>
 @stop
+
+
+
+<?php /*
+$last_year = date('Y', strtotime($bike->lost_date)); // THIS WOULD GO AT THE END
+
+@if ($last_year != "" && $last_year != date('Y', strtotime($bike->lost_date)))
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 style="color:#ccc;">{{ date('Y', strtotime($bike->lost_date)) }}</h1>
+        </div>
+@endif
+*/ ?>

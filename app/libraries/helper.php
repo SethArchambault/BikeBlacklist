@@ -30,7 +30,7 @@ class Helper
 
         // create a image size
         $image_obj->reset();
-        $image_obj->fit(300,200);
+        $image_obj->fit(370,247);
         $image_obj->save($path['public_upload_dir'] . $path['thumb']);
 
         return $filename['basic'];

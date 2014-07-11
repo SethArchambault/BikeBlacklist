@@ -1,6 +1,8 @@
 @extends('site._layouts.master')
 
 @section('header')
+<link rel="stylesheet" type="text/css" href="/bike_style.css">
+
 <!-- for Google -->
 <meta name="description" content="{{ $bike->description }}" />
 <meta name="keywords" content="detroit, mssing, stolen, bike, bicycle" />
@@ -29,23 +31,38 @@
 
 		@include('site._partials.flash_message')
 		<div class="row">
-			
 
-			<div class="col-sm-8">
-				<h1>{{ date($date_format, strtotime($bike->lost_date)) }}</h1>
-				<p>{{ $bike->description }}</p>
-		      	<div style="padding-bottom:10px;"><img src="/uploads/large/{{ $bike->photo }}" width="100%"></div>
-			    <a href="#">Report this image</a>
-			</div>
-			<div class="col-sm-4">
-                <p>Share this link</p>
-                <div>http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}</div>
-			    <p><a href="#" class="btn btn-primary btn-lg" data-dismiss="modal" data-toggle="modal" data-target="#foundItModal" role="button">I Found It!</a> </p>
+			<div class="col-sm-5">
+                <h1>MISSING BIKE</h1>
+                <div id="bike-date">{{ date($date_format, strtotime($bike->lost_date)) }}</div>
+				<div id="bike-description">{{ $bike->description }}</div>
+		      	<div style="padding-bottom:10px;"></div>
+                <a href="#" class="btn-found-it text-center" data-dismiss="modal" data-toggle="modal" data-target="#foundItModal" role="button">I FOUND IT</a>
 
-				
 			</div>
-		</div>
-	</div>
+			<div class="col-sm-7">
+                <img id="bike-image" class="img-responsive" src="/uploads/large/{{ $bike->photo }}">
+            </div>
+		</div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <div id="div-share-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div id="text-help-find">
+                        Help Find This Bike
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="div-share">
+                        Share this link with everyone you know:<br>
+                        http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /.div-share-bar -->
+
 
 	@include('site._partials.foundit_modal')
 
