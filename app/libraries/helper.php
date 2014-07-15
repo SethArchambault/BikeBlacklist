@@ -2,6 +2,9 @@
 
 namespace Helper;
 
+use Image;
+use Whoops\Example\Exception;
+
 class Helper
 {
     public static function SaveBikePhoto($photo_file_input, $file_dir)
@@ -9,14 +12,13 @@ class Helper
         // photo
         $filename['source'] = $photo_file_input->getClientOriginalName();
         $filename['basic'] = date("Y-m-d_H-i_") . $filename['source'];
-
         $path['source'] = $photo_file_input->getRealPath();
         $path['original'] = 'original/' . $filename['basic'];
         $path['large'] = 'large/' . $filename['basic'];
         $path['thumb'] = 'thumb/' . $filename['basic'];
         $path['public_upload_dir'] = public_path($file_dir);
 
-        $image_obj = \Intervention\Image\Facades\Image::make($path['source']);
+        $image_obj = Image::make($path['source']);
 
         $image_obj->backup();
 

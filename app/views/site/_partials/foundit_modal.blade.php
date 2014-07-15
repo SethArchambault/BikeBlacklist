@@ -9,7 +9,7 @@
         </div>
         <div class="modal-body">
           <p>Pleae give whatever useful details you can + a way to reach you.</p>
-          <input type="hidden" id="bikeUidInput" name="bike_id" value="">
+          <input type="hidden" id="bikeUidInput" name="bike_uid" value="">
           <textarea class="col-xs-12" name="content"></textarea>  
         </div>
         <div class="modal-footer">

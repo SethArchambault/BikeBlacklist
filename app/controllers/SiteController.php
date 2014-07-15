@@ -6,12 +6,14 @@ use Input, Redirect, Config, View;
 use Illuminate\Queue\Queue;
 use Mail;
 use Log;
+use Whoops\Example\Exception;
 
 class SiteController extends \BaseController {
 
         public function bikes()
         {
-                return View::make('site.bikes')->with('bikes', Bike::orderby('lost_date', 'desc')->get());
+                return View::make('site.bikes')
+                    ->with('bikes', Bike::orderby('lost_date', 'desc')->orderBy('created_at', 'desc')->get());
         }
 
         public function bike($bike_uid)
@@ -70,10 +72,10 @@ class SiteController extends \BaseController {
             // input
             $description = Input::get('description');
             $lost_date = Input::get('lost_date');
-
-
+            $email = Input::get('email');
             $photo_filename = Helper::SaveBikePhoto(Input::file('photo'), Config::get('app.file_dir'));
             // build unique id
+
             $desc_words= explode(" ", $description, 4);
             $bike_uid = implode("-", array_splice($desc_words, 0, 3));
             $bike_uid = strtolower($bike_uid);
@@ -96,7 +98,7 @@ class SiteController extends \BaseController {
             $bike->description = $description;
             $bike->lost_date = date('Y-m-d', strtotime($lost_date));
             $bike->photo = $photo_filename;
-            $bike->email = Input::get('email');
+            $bike->email = $email;
             $bike->status = 0;
             $bike->bike_uid = $bike_uid;
             $bike->found_key = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 1).substr(md5(time()),1);
@@ -116,7 +118,7 @@ class SiteController extends \BaseController {
             // send message to admin
             Mail::send('emails.hello_admin', $data, function($message)
             {
-                    $message->to('detroitbikeblacklist@seth.doercreator.com', 'Seth Archambault')->subject('Blikelist - Missing Bike Reported');
+                    $message->to('hellofriend@detroitbikeblacklist.com', 'Seth Archambault')->subject('Blikelist - Missing Bike Reported');
             });
 
             return Redirect::to('/bike/' . $bike->bike_uid)->with('message', "Thanks for reporting your bike!");
@@ -134,7 +136,6 @@ class SiteController extends \BaseController {
                 {
                         Log::error("No bikes with bike_uid '$bike_uid'. Something is wrong.");
                         return Redirect::route('site.bikes')->with('message', "Can't find that bike! Seth will figure out what is wrong.");
-
                 }
 
                 $bike = $bikes_with_uid->first();
@@ -150,7 +151,7 @@ class SiteController extends \BaseController {
                 // send message to admin
                 Mail::send('emails.found_bike_admin', $data, function($message)
                 {
-                        $message->to('detroitbikeblacklist@seth.doercreator.com', 'Seth Archambault')->subject('Blikelist - Found Bike');
+                        $message->to('hellofriend@detroitbikeblacklist.com', 'Seth Archambault')->subject('Blikelist - Found Bike');
                 });
 
                 // send message to bike owner
@@ -158,14 +159,23 @@ class SiteController extends \BaseController {
                 return Redirect::route('site.bikes')->with('message', 'Email Sent! An email has been sent to the rightful owner of the bike - thanks so much!');
         }
 
-        public function feedback() 
+
+
+        public function feedback() {
+            return View::make('site.feedback');
+        }
+
+        public function mail_feedback()
         {
-                Mail::send('emails.feedback', ['content', Input::get('content')], function($message)
+
+            $input_message = Input::get('message');
+            $data['content'] = $input_message;
+                Mail::send('emails.feedback', $data, function($message)
                 {
-                        $message->to('blikelist@seth.doercreator.com', 'Seth Archambault')->subject('Feedback for the Blikelist!');
+                        $message->to('feedback@detroitbikeblacklist.com', 'Feedback Detroit Bike Blacklist')->subject('Feedback for the Blikelist!');
                 });
-        
-                return Redirect::route('site.bikes')->with('message', 'Email Sent!');
+
+                return Redirect::route('site.bikes')->with('message', 'Message Sent! Thanks!');
         }
  
 }

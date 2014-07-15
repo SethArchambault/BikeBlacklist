@@ -9,3 +9,4 @@ app/config/database.php
 sync_vendor_files.sh
 .git
 sync_all
+.idea

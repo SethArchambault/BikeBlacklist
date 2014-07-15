@@ -43,6 +43,7 @@ label {
 
 .navbar {
 	border: none;
+    margin-bottom: 0;
 }
 
 .navbar-default {
@@ -95,7 +96,15 @@ label {
 	}
 }
 
+#main {
+    padding-top:30px;
+    padding-bottom:30px;
+}
 
+#footer {
+    background:#f5f5f5;
+    padding:50px 0;
+}
 
 /* HOME */
 

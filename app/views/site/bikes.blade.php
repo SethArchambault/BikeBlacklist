@@ -5,11 +5,11 @@
 @stop
 
 @section('main')
-	<div class="container">
+	<div class="container" id="main">
 
 		@include('site._partials.flash_message')
 		<div class="subtext col-sm-12 text-center">
-            <h1>Good Bike, Go Home</h1>
+            <h1>GOOD BIKE, GO HOME</h1>
             These are all the bikes missing in Detroit.<br>
             If you find one or (ugh) buy one click “I FOUND IT” <br>
             to send the owner a message
@@ -66,11 +66,6 @@
 			var bike_uid = $(this).attr('data-bike-uid');
 			$('#bikeUidInput').val(bike_uid);
 		});
-
-
-
-
-
 	</script>
 @stop
 

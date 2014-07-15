@@ -5,7 +5,7 @@
 @stop
 
 @section('main')
-	<div class="container fuelux">
+	<div class="container fuelux" id="main">
 		<!-- Button trigger modal -->
 
 		<h1>MY BIKE IS MISSING</h1>
@@ -57,7 +57,7 @@
                         </div>
                     </div> <!-- /.row -->
                     <div class="row">
-                        <p class="help-block col-sm-8 col-md-7 col-lg-6">Triple check this, it's the only way someone can contact you if your bike is found.  You'll only get an email if someone finds your bike.</p>
+                        <p class="help-block col-sm-8 col-md-7 col-lg-6">Triple check this, it's the only way someone can contact you if your bike is found. </p>
                     </div>
 
 				    <div class="row" style="padding-top:15px;">
@@ -85,10 +85,13 @@
 		});
 
 		$('#descJS').keyup(function() {
-			var word_array = $(this).val().split(" ");
-		    word_array.splice(3, word_array.length);
+			var word_array = $(this).val().replace(/ +/g, " ")
+                .replace(/[^\w\s]/gi, '')
+                .substr(0,25)
+                .split(" ");
+            word_array.splice(4, word_array.length);
 			var bike_uid = word_array.join("-").toLowerCase();
-			$('#uniqueUrlJS').text("http://blikelist.com/"+ bike_uid);
+			$('#uniqueUrlJS').text("http://bikeblacklist.com/"+ bike_uid);
 		});
 	});
 

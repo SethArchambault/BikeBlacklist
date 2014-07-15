@@ -3933,7 +3933,6 @@ namespace {
 		 * 
 		 * This is more efficient on larger data-sets, etc.
 		 *
-		 * @param \Illuminate\Pagination\Factory  $paginator
 		 * @param int    $perPage
 		 * @param array  $columns
 		 * @return \Illuminate\Pagination\Paginator
@@ -8447,6 +8446,7 @@ namespace {
 		 *
 		 * @param \Illuminate\View\Factory  $views
 		 * @param \Swift_Mailer  $swift
+		 * @param \Illuminate\Events\Dispatcher  $events
 		 * @return void
 		 * @static 
 		 */
@@ -11101,7 +11101,7 @@ namespace {
 		/**
 		 * Register a route matched event listener.
 		 *
-		 * @param callable  $callback
+		 * @param string|callable  $callback
 		 * @return void
 		 * @static 
 		 */
@@ -11113,7 +11113,7 @@ namespace {
 		/**
 		 * Register a new "before" filter with the router.
 		 *
-		 * @param mixed  $callback
+		 * @param string|callable  $callback
 		 * @return void
 		 * @static 
 		 */
@@ -11125,7 +11125,7 @@ namespace {
 		/**
 		 * Register a new "after" filter with the router.
 		 *
-		 * @param mixed  $callback
+		 * @param string|callable  $callback
 		 * @return void
 		 * @static 
 		 */
@@ -11138,7 +11138,7 @@ namespace {
 		 * Register a new filter with the router.
 		 *
 		 * @param string  $name
-		 * @param mixed  $callback
+		 * @param string|callable  $callback
 		 * @return void
 		 * @static 
 		 */
@@ -11193,13 +11193,25 @@ namespace {
 		 * Add a new route parameter binder.
 		 *
 		 * @param string  $key
-		 * @param callable  $binder
+		 * @param string|callable  $binder
 		 * @return void
 		 * @static 
 		 */
 		 public static function bind($key, $binder){
 			//Method inherited from \Illuminate\Routing\Router
 			 \Illuminate\Routing\Router::bind($key, $binder);
+		 }
+
+		/**
+		 * Create a class based binding using the IoC container.
+		 *
+		 * @param string    $binding
+		 * @return \Closure
+		 * @static 
+		 */
+		 public static function createClassBinding($binding){
+			//Method inherited from \Illuminate\Routing\Router
+			return \Illuminate\Routing\Router::createClassBinding($binding);
 		 }
 
 		/**
@@ -13912,7 +13924,7 @@ namespace {
 		/**
 		 * Creates new instance of Image Manager
 		 *
-		 * @param Illuminate\Config\Repository $config
+		 * @param \Illuminate\Config\Repository $config
 		 * @static 
 		 */
 		 public static function __construct($config = null){

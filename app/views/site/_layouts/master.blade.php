@@ -3,7 +3,9 @@
 <head>
     <link rel="shortcut icon" href="/favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
-	<title>Detroit Bike Blacklist</title>
+	@section('title')
+        <title>Detroit Bike Blacklist</title>
+    @show
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -36,7 +38,7 @@
 			    </ul>
 				  <ul class="nav navbar-nav navbar-right">
 			        <li><a href="/">LOST BIKES</a></li>
-			        <li><a href="/about">ABOUT</a></li>
+<!--			        <li><a href="/about">ABOUT</a></li>-->
 			        <li><a href="/feedback">FEEDBACK</a></li>
                     <li class="li-missing-bike"><a href="/my-bike-is-missing" class="btn-missing-bike">MY BIKE IS MISSING</a></li>
 				  </ul>
@@ -49,7 +51,13 @@
 
 
     @yield('main')
-
+<div id="footer">
+    <div class="container" >
+        <div class="col-sm-12 text-right">
+            Detroit Bike Blacklist 2014
+        </div>
+    </div>
+</div>
 	<script type="text/javascript" src="/lib/jquery/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="/lib/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/lib/eternicode-datepicker/js/bootstrap-datepicker.js"></script>
@@ -60,7 +68,7 @@
 		});
 	</script>
     @section('footer')
-    @show
+	@show
 	@include('site._partials.piwik')
 </body>
 </html>

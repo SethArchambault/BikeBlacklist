@@ -8,3 +8,4 @@ public/uploads/*
 app/config/database.php
 sync_vendor_files.sh
 sync_all
+.idea

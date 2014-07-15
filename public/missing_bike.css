@@ -1,7 +1,8 @@
-.input-group-btn .btn, .input-group-addon {
+/*.input-group-btn .btn, .input-group-addon {
     background: #5989ff;
     color:#fff;
 }
+*/
 
 .input-group-btn .btn:hover {
     background: #335096;
@@ -9,4 +10,18 @@
 
 .help-block {
     font-size:18px;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 48px;
+    }
+}
+
+#subbutton:hover {
+    color:#fff;
 }
