@@ -33,12 +33,11 @@ Route::get('/about', ['uses' => 'SiteController@about']);
 Route::get('/my-bike-is-missing', array('as' => 'site.my_bike_is_missing', 'uses' => 'App\Controllers\SiteController@my_bike_is_missing'));
 Route::post('/store', array('as' => 'site.store', 'uses' => 'App\Controllers\SiteController@store'));
 
-Route::get('/login/', ['before' => '', 'uses' => 'AdminController@login']);
-
+Route::get('/login/', ['uses' => 'AdminController@login']);
+Route::post('/admin/check_login', ['uses' => 'AdminController@check_login']);
 Route::group(['prefix' => 'admin', 'before' => 'auth'], function() 
 {
 	Route::get('logout/', ['uses' => 'AdminController@logout']);
-	Route::post('check_login', ['uses' => 'AdminController@check_login']);
 	Route::get('/', ['uses' => 'AdminController@bike_index']);
 	Route::get('bike_index', ['uses' => 'AdminController@bike_index']);
 	Route::get('bike_edit/{id}', ['uses' => 'AdminController@bike_edit']);

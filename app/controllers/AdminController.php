@@ -5,8 +5,8 @@ use Helper\Helper;
 
 class AdminController extends BaseController {
 
-    public function login($message = "") {
-        return View::make('admin.login', ['message' => $message]);   
+    public function login() {
+        return View::make('admin.login');   
     }
 
     public function logout() {
@@ -23,7 +23,7 @@ class AdminController extends BaseController {
         {
             return Redirect::intended('admin/bike_index');
         }
-        return Redirect::to('login');
+        return Redirect::to('login')->with('message', 'Check login failed');
     
     }
 
@@ -51,12 +51,12 @@ class AdminController extends BaseController {
     public function bike_delete($id)
     {
         $bike = Bike::find($id);
+        // TODO check to see if bike exists
         File::delete('uploads/large/'.$bike->photo);
         File::delete('uploads/thumb/'.$bike->photo);
         File::delete('uploads/original/'.$bike->photo);
-        $bike->delete();
 
-        return Redirect::to('/admin/bike_index');
+        return Redirect::to('/admin/bike_index')->with('message', 'Bike deleted');
     }
 
     public function lost($bike_id)
@@ -88,7 +88,7 @@ class AdminController extends BaseController {
     {
         User::find($user_id)->delete();
 
-        return Redirect::to('/admin/user_index');
+        return Redirect::to('/admin/user_index')->with('message', 'user deleted');
     }
 
     public function user_create()
@@ -107,7 +107,7 @@ class AdminController extends BaseController {
 
         $user->save();
         
-        return Redirect::to('/admin/user_index');
+        return Redirect::to('/admin/user_index')->with('message', 'User created');
 
     }
 

@@ -3,9 +3,7 @@
 @section('main')
 	<div class="container">
 		<div>
-		<? if (isset($message)): ?>
-			{{ $message }}
-		<? endif; ?>
+		@include('site._partials.flash_message')
 		</div>
 		<form method="post" action="/admin/check_login">
 			Email <br>
