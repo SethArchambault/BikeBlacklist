@@ -177,5 +177,8 @@ class SiteController extends \BaseController {
 
                 return Redirect::route('site.bikes')->with('message', 'Message Sent! Thanks!');
         }
+        public function about() {
+            return View::make('site.about');
+        }
  
 }

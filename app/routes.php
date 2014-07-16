@@ -28,6 +28,7 @@ Route::get('/bike/{bike_uid}', array('as' => 'site.bike', 'uses' => 'App\Control
 Route::post('/email', ['as' => 'site.email', 'uses' => 'App\Controllers\SiteController@email']);
 Route::get('/feedback', ['as' => 'site.feedback', 'uses' => 'App\Controllers\SiteController@feedback']);
 Route::post('/mail_feedback', ['as' => 'site.mail_feedback', 'uses' => 'App\Controllers\SiteController@mail_feedback']);
+Route::get('/about', ['uses' => 'SiteController@about']);
 
 Route::get('/my-bike-is-missing', array('as' => 'site.my_bike_is_missing', 'uses' => 'App\Controllers\SiteController@my_bike_is_missing'));
 Route::post('/store', array('as' => 'site.store', 'uses' => 'App\Controllers\SiteController@store'));
