@@ -8,7 +8,7 @@
           <h1 class="modal-title" id="foundItModalLabel">I FOUND IT!</h1>
         </div>
         <div class="modal-body">
-          <p>Pleae give whatever useful details you can + a way to reach you.</p>
+          <p>Please give whatever useful details you can + a way to reach you.</p>
           <input type="hidden" id="bikeUidInput" name="bike_uid" value="">
           <textarea class="col-xs-12" name="content"></textarea>  
         </div>
