@@ -39,6 +39,7 @@
 				  <ul class="nav navbar-nav navbar-right">
 			        <li><a href="/">LOST BIKES</a></li>
 <!--			        <li><a href="/about">ABOUT</a></li>-->
+			        <li><a href="/about">ABOUT</a></li>
 			        <li><a href="/feedback">FEEDBACK</a></li>
                     <li class="li-missing-bike"><a href="/my-bike-is-missing" class="btn-missing-bike">MY BIKE IS MISSING</a></li>
 				  </ul>
@@ -53,8 +54,16 @@
     @yield('main')
 <div id="footer">
     <div class="container" >
-        <div class="col-sm-12 text-right">
-            Detroit Bike Blacklist 2014
+    	<div class="row">
+    	<div class="col-sm-4">
+	        <a href="/feedback">Comments? Feedback? I want them!</a>       
+    	</div>
+        <div class="col-sm-8 text-right">
+            Detroit Bike Blacklist 2014<br>
+        	<a href="https://www.facebook.com/BikeBlacklist" target="_blank">Facebook</a>
+        	<a href="https://www.twitter.com/BikeBlacklist" target="_blank">Twitter</a>
+        	<a href="https://github.com/SethArchambault/BikeBlacklist" target="_blank">Github</a>
+        </div>
         </div>
     </div>
 </div>

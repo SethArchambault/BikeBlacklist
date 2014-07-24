@@ -44,6 +44,8 @@ class SiteController extends \BaseController {
                 return View::make('site.my_bike_is_missing')->with('todays_date', date('m/d/Y'));
         }
 
+
+
         public function resize_photo()
         {
                 return View::make('site.my_bike_is_missing');
@@ -122,6 +124,11 @@ class SiteController extends \BaseController {
             });
 
             return Redirect::to('/bike/' . $bike->bike_uid)->with('message', "Thanks for reporting your bike!");
+        }
+
+        public function bike_stored()
+        {
+            return View::make('site.bike_stored');
         }
 
         public function email() 

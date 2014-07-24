@@ -10,7 +10,7 @@
 
     <h1>FEEDBACK</h1>
     <div class="row">
-        <p class="col-sm-9">Ultimately this site will not be useful without feedback from the biking community. What
+        <p class="col-sm-9">Ultimately this site will not be useful without feedback from the biking community. Contact me personally using the form below, or start a discussion in the comments.  What
             can this site do better? Anything broken? Leave your email if you want me to get back with you!</p>
     </div>
     <hr>
@@ -28,6 +28,20 @@
             {{ Form::submit('SEND', array('class' => 'btn btn-primary btn-block btn-lg')) }}
         </div>
     </div>
+
+       <div id="disqus_thread" style="padding-top:50px;"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'detroitbikeblacklist'; // required: replace example with your forum shortname
+        var disqus_title = "About Detroit Bike Blacklist";
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+
 </div>
 {{ Form::close() }}
 </div> <!-- /.container -->

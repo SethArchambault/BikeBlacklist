@@ -14,6 +14,7 @@
             If you find one or (ugh) buy one click “I&nbsp;FOUND&nbsp;IT” <br>
             to send the owner a message
         </div>
+        <div style="padding-bottom:15px;" class="visible-xs"><a href="/my-bike-is-missing" class="btn btn-block btn-primary">MY BIKE IS MISSING</a></div>
 
         <div class="alert alert-info">I'm working on this site as we speak. It will be ready to be used on July 30th 2014 (my Detroit-iversery)</div>
 
