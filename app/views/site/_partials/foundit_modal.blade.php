@@ -5,12 +5,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h1 class="modal-title" id="foundItModalLabel">I FOUND IT!</h1>
+          <h1 class="modal-title" id="foundItModalLabel">I FOUND IT</h1>
         </div>
         <div class="modal-body">
-          <p>Please give whatever useful details you can + a way to reach you.</p>
+          <p>Please give whatever useful details you can & a way to reach you.</p>
           <input type="hidden" id="bikeUidInput" name="bike_uid" value="">
-          <textarea class="col-xs-12" name="content"></textarea>  
+            <textarea class="form-control" name="content" rows="4"></textarea>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

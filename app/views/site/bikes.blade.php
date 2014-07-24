@@ -11,7 +11,7 @@
 		<div class="subtext col-sm-12 text-center">
             <h1>GOOD BIKE, GO HOME</h1>
             These are all the bikes missing in Detroit.<br>
-            If you find one or (ugh) buy one click “I FOUND IT” <br>
+            If you find one or (ugh) buy one click “I&nbsp;FOUND&nbsp;IT” <br>
             to send the owner a message
         </div>
 

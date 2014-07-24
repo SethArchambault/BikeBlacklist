@@ -4,7 +4,6 @@
 	<div class="container">
 		<br><br>
 		<table class="table table-bordered">
-			@foreach ($bikes as $bike)
 			<tr>
 				<th>id</th>
 				<th>bike_uid</th>
@@ -18,6 +17,7 @@
 				<th></th>
                 <th></th>
 			</tr>
+			@foreach ($bikes as $bike)
 			<tr>
 				<td>{{ $bike->id }}</td>
 				<td>{{ $bike->bike_uid }}</td>

@@ -1,10 +1,11 @@
 
 h1 {
     margin-top:10px;
+    font-size:40px;
 }
 
 #bike-image {
-    padding-top: .4em;
+    padding-top: 18px;
 }
 
 #bike-date {
@@ -24,8 +25,8 @@ h1 {
     color:#ffffff;
     display:block;
     border-radius: 3px;
-    font-weight: 900;
-    font-size:29px;
+    font-weight: 700;
+/*    font-size:29px;*/
 }
 .btn-found-it:hover {
     background:#335096;
@@ -46,12 +47,12 @@ h1 {
 
 #text-help-find {
     font-weight: 900;
-    font-size: 41px;
+    font-size: 30px;
     color: #c4c4c4;
 }
 
 #div-share {
-    padding-top: 10px;
+    padding-bottom: 20px;
     font-size: 18px;
 }
 

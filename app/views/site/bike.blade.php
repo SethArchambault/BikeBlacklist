@@ -52,21 +52,31 @@
     <div id="div-share-bar">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div id="text-help-find">
                         Help Find This Bike
                     </div>
+                    <div id="div-share">
+                        <p>Share this link with everyone you know:</p>
+                        <div class="row">
+                            <div class="col-sm-7 col-xs-12" style="padding-bottom:15px;">
+                                <input type="text" id="copypath" class="form-control" value="http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}">
+                            </div>
+                            <div class="col-sm-2 col-xs-6">
+                                <a class="btn btn-primary" target=_blank href="https://www.facebook.com/sharer/sharer.php">Share on Facebook</a> 
+                            </div>
+                            <div class="col-sm-2 col-xs-6">
+                                <a target=_blank class="btn btn-primary" href="https://twitter.com/home?status=Help!%20My%20bike%20has%20been%20stolen!%20Will%20you%20keep%20an%20eye%20out%20for%20it?%20http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}">Share on Twitter</a> <!-- <a class="btn btn-primary" href="http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}">Direct Link</a>-->
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-6">
-                    <div id="div-share">
-                        Share this link with everyone you know:<br>
-                        http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}
-                    </div>
+
                 </div>
             </div>
         </div>
     </div> <!-- /.div-share-bar -->
-
 
 	@include('site._partials.foundit_modal')
 
@@ -77,6 +87,7 @@
                 var bike_uid = $(this).attr('data-bike-uid');
                 $('#bikeUidInput').val(bike_uid);
             });
+
         </script>
     @stop
 

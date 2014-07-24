@@ -1,6 +1,6 @@
-<p>Again, so sorry to hear your bike was stolen.  This sucks.  But you're doing all you can to get it back - that's all you can do!</p>
+<p>So sorry to hear your bike was stolen.  This sucks.  But you're doing all you can to get it back - that's all you can do.</p>
 
-<p>So you've submitted your bike on the Blikelist, but there's more you can do, it's just about how much time you have to devote to getting your bike back:</p>
+<p>So you've submitted your bike on the Blikelist, but if you want to invest a little more time, you can multiply the chance of your bike coming back to you:</p>
 
 <h1>With 1.5 Minutes</h1>
 <p>you can let everyone you know that your bike is missing:</p>
@@ -19,7 +19,7 @@ Help!  My bike has been stolen!  Will you keep an eye out for it?
 <h1>With 3 Minutes More Minutes</h1>
 <p>You can let the biking community know your bike is missing.</p>
 
-<p>1. Join this facebook group</p>
+<p>1. Join this facebook group: <a href="https://www.facebook.com/groups/146048678917990/">Slow Roll</a></p>
 <p>2. Write a short message, you can use this as a template (add your thanks!):</p>
 
 <code>

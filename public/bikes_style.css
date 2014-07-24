@@ -30,7 +30,7 @@
     color:#ffffff;
     background:#5989ff;
     font-weight: 700;
-    padding: 5px 0;
+    padding: 12px 0;
 }
 
 .btn-i-found-it:hover {
@@ -50,7 +50,7 @@
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 23px;
 }
 
 @media (min-width: 768px) {
