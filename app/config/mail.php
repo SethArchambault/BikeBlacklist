@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => "hellofriend@detroitbikeblacklist.com", 'name' => "Seth from Detroit Bike Blacklist"),
+	'from' => array('address' => "seth@detroitbikeblacklist.com", 'name' => "Seth from DetroitBikeBlacklist"),
 
 	/*
 	|--------------------------------------------------------------------------

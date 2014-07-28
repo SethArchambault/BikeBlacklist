@@ -1,5 +1,10 @@
 @extends('site._layouts.master')
 
+@section('title')
+<title>Feedback - Detroit Bike Blacklist</title>
+@stop
+
+
 @section('header')
 <link rel="stylesheet" type="text/css" href="/missing_bike.css">
 @stop
@@ -28,6 +33,9 @@
             {{ Form::submit('SEND', array('class' => 'btn btn-primary btn-block btn-lg')) }}
         </div>
     </div>
+
+            <p style="padding-top:10px;">Or give feedback publicly in the comments below.</p>
+
 
        <div id="disqus_thread" style="padding-top:50px;"></div>
     <script type="text/javascript">

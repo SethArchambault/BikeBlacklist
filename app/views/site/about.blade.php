@@ -35,11 +35,20 @@
         <blockquote>
             <a href="http://imovedtodetroit.com/post/76522601034/the-fourth-wall-of-detroit" target="_blank">Read More - The Fourth Wall of Detroit</a>
         </blockquote>
-        <h2>To Come</h2>
+        <h2>Features To Come</h2>
         <ul>
+        <li>Adding location the bike was stolen.</li>
+        <li>Easy way to printout your stolen bike.</li>
         <li>An API to access data.</li>
         <li>Connecting with local police departments.</li>
         <li><a href="/feedback">Send me your ideas!</a></li>
+        </ul>
+        <h2>Thanks To</h2>
+        <ul>
+        <li>Joey from <a href="http://thehubofdetroit.org/">the Hub</a> for pushing me to finish this thing.</li>
+        <li>"Magic" for being the first to submit a bike!</li>
+        <li>Hannah Hillier for advice and feedback on the business card design and logo.</li>
+        <li><a href="http://saragreenedesign.com">Sara Greene</a> for design guidance on the logo and site design.</li>
         </ul>
         </div>
     </div>

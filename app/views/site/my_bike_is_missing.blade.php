@@ -1,5 +1,10 @@
 @extends('site._layouts.master')
 
+@section('title')
+<title>My Bike Is Missing - Detroit Bike Blacklist</title>
+@stop
+
+
 @section('header')
 <link rel="stylesheet" type="text/css" href="/missing_bike.css">
 @stop

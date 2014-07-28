@@ -28,6 +28,10 @@ label {
     color:#363636;
 }
 
+#announcement-bar {
+    background-color:#333; width:100%; padding:10px 10px; text-align:center; color:#fff;
+}
+
 .btn-primary
 {
     background:#5989ff;
@@ -99,11 +103,18 @@ label {
 #main {
     padding-top:30px;
     padding-bottom:30px;
+    min-height: 500px;
 }
 
 #footer {
     background:#f5f5f5;
     padding:50px 0;
+}
+
+@media (min-width: 768px) {
+    #footer-right {
+        text-align: right;
+    }
 }
 
 /* HOME */

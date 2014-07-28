@@ -55,6 +55,7 @@ class AdminController extends BaseController {
         File::delete('uploads/large/'.$bike->photo);
         File::delete('uploads/thumb/'.$bike->photo);
         File::delete('uploads/original/'.$bike->photo);
+        $bike->delete();
 
         return Redirect::to('/admin/bike_index')->with('message', 'Bike deleted');
     }

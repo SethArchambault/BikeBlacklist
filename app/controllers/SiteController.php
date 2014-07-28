@@ -123,7 +123,7 @@ class SiteController extends \BaseController {
                     $message->to('hellofriend@detroitbikeblacklist.com', 'Seth Archambault')->subject('Blikelist - Missing Bike Reported');
             });
 
-            return Redirect::to('/bike/' . $bike->bike_uid)->with('message', "Thanks for reporting your bike!");
+            return Redirect::to('/bike/' . $bike->bike_uid)->with('message', "Thanks for reporting your bike! Check your email for next steps.");
         }
 
         public function bike_stored()

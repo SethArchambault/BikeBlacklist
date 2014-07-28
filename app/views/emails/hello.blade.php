@@ -3,7 +3,7 @@
 <p>So you've submitted your bike on the Blikelist, but if you want to invest a little more time, you can multiply the chance of your bike coming back to you:</p>
 
 <h1>With 1.5 Minutes</h1>
-<p>you can let everyone you know that your bike is missing:</p>
+<p>You can let everyone you know that your bike is missing:</p>
 
 <p>1. Copy this text:</p>
 
@@ -12,9 +12,9 @@ Help!  My bike has been stolen!  Will you keep an eye out for it?
 {{ $url }}
 </code>
 
-<p>2. Goto <a href="http://Facebook.com" target="_blank">facebook.com</a> and paste it.</p>
+<p>2. Go to <a href="http://Facebook.com" target="_blank">facebook.com</a> and paste it.</p>
 
-<p>3. Goto http://twitter.com and paste it.</p>
+<p>3. Go to <a href="http://twitter.com">Twitter</a> and paste it.</p>
 
 <h1>With 3 Minutes More Minutes</h1>
 <p>You can let the biking community know your bike is missing.</p>
@@ -45,3 +45,6 @@ Hi, my bike went missing, if you come across it can you let me know?
 <li>info@wheelhousedetroit.com</li>
 </ul>
 
+<p>Good luck!  If you have any thoughts on how to make this proces better - reply to this email.</p>
+<p>Thanks!</p>
+<p>- Seth @ Detroit Bike Blacklist</p>

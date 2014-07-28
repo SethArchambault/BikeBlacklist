@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html>
 <head>
     <link rel="shortcut icon" href="/favicon.ico">
@@ -17,6 +17,9 @@
 
 </head>
 <body>
+	<div id="announcement-bar">
+		I'm working on this site as we speak. It will be officially live <b>July 30th 2014</b> (my Detroitiversery) - Seth
+	</div>
     @section('nav')
 		<nav class="navbar navbar-default" role="navigation">
 	        <div class="container">
@@ -55,10 +58,10 @@
 <div id="footer">
     <div class="container" >
     	<div class="row">
-    	<div class="col-sm-4">
+    	<div class="col-sm-9">
 	        <a href="/feedback">Comments? Feedback? I want them!</a>       
     	</div>
-        <div class="col-sm-8 text-right">
+        <div class="col-sm-3" id="footer-right">
             Detroit Bike Blacklist 2014<br>
         	<a href="https://www.facebook.com/BikeBlacklist" target="_blank">Facebook</a>
         	<a href="https://www.twitter.com/BikeBlacklist" target="_blank">Twitter</a>

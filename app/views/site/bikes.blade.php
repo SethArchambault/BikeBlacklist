@@ -1,7 +1,33 @@
 @extends('site._layouts.master')
 
+@section('title')
+<title>Detroit Bike Blacklist - A super simple way for reporting your bike stolen, and a super simple way for letting the bike owner know you've found it. That's it.</title>
+@stop
+
+
 @section('header')
 <link rel="stylesheet" type="text/css" href="/bikes_style.css">
+
+<!-- for Google -->
+<meta name="description" content="A super simple way for reporting your bike stolen, and a super simple way for letting the bike owner know you've found it. That's it." />
+<meta name="keywords" content="detroit, mssing, stolen, bike, bicycle" />
+
+<meta name="author" content="Blikelist" />
+<meta name="copyright" content="2014" />
+<meta name="application-name" content="Blikelist" />
+
+<!-- for Facebook -->          
+<meta property="og:title" content="Detroit Bike Blacklist" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="http://detroitbikeblacklist.com/images/detroit-bike-blacklist-logo-square.png" />
+<meta property="og:url" content="http://detroitbikeblacklist.com/" />
+<meta property="og:description" content="A super simple way for reporting your bike stolen, and a super simple way for letting the bike owner know you've found it. That's it." />
+
+<!-- for Twitter -->          
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Detroit Bike Blacklist" />
+<meta name="twitter:description" content="A super simple way for reporting your bike stolen, and a super simple way for letting the bike owner know you've found it. That's it." />
+<meta name="twitter:image" content="http://detroitbikeblacklist.com/images/detroit_bike_blacklist_header_logo.png" />
 @stop
 
 @section('main')
@@ -16,11 +42,17 @@
         </div>
         <div style="padding-bottom:15px;" class="visible-xs"><a href="/my-bike-is-missing" class="btn btn-block btn-primary">MY BIKE IS MISSING</a></div>
 
-        <div class="alert alert-info">I'm working on this site as we speak. It will be ready to be used on July 30th 2014 (my Detroit-iversery)</div>
-
 			@if (count($bikes) > 0)
 			@else
-				<div class="alert alert-info" role="alert">There are no missing bikes in Detroit at the moment!<br>...really?</div>
+
+				<div class="alert alert-info" role="alert">
+				<p>No bikes have been stolen in Detroit! Really? That can't be - it's probably just because this site is really new!</p>
+				<p>If you've had your bike stolen, I would really appreciate it if you take 12 seconds to report it.</p>
+				<p>It's painless, I promise. Thank you!</p>
+
+		        <div style="padding:15px 0 0;" class="hidden-xs"><a href="/my-bike-is-missing" class="btn btn-primary">MY BIKE IS MISSING</a></div>
+			
+				</div>
 			@endif
 
 		<div class="row">
@@ -44,6 +76,13 @@
 				?>
 			@endforeach
 		</div>
+				<div class="alert alert-info" role="alert">
+				<p>I've just put this site out into the world, and the first bike has already been submitted. Thank you!</p>
+				<p>But before I begin driving traffic to the site, I'd like to have as many bikes on the site as possible.</p>
+				<p>If you've had your bike stolen, I would really appreciate it if you take 12 seconds to report it.</p>
+				<p>It's painless, I promise. Thanks!</p>
+		        <div style="padding:15px 0 0;" class="hidden-xs"><a href="/my-bike-is-missing" class="btn btn-primary">MY BIKE IS MISSING</a></div>
+				</div>
 	</div>
 
 	@include('site._partials.foundit_modal')
