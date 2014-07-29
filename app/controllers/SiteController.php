@@ -30,7 +30,7 @@ class SiteController extends \BaseController {
                 }
 
                 $bike = $bikes_with_uid->first();
-                $date_format = 'l, F jS - Y';
+                $date_format = 'l, F jS, Y';
 
                 if (date('Y', strtotime($bike->lost_date)) == date('Y')) {
                         $date_format = 'l, F jS';
@@ -80,6 +80,7 @@ class SiteController extends \BaseController {
 
             $desc_words= explode(" ", $description, 4);
             $bike_uid = implode("-", array_splice($desc_words, 0, 3));
+            $bike_uid = preg_replace('/[^A-Za-z0-9\-]/', '', $bike_uid);
             $bike_uid = strtolower($bike_uid);
 
             // check to see if this unique Id exists

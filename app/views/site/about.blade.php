@@ -23,13 +23,13 @@
         <blockquote><a href="http://imovedtodetroit.com/post/63417216312/theft-guilt-part-1" target="_blank">Read the Full Story - Theft Guilt: Part 1</a></blockquote>
         <p>I pieced this together by meeting the former bike owner, and then talking with people at the bike shop. It was no one's fault - 
         it just ended up that way.</p>
-        <p>But what if there was a way to check if the bike you were getting had been stolen?</p>
+        <p>But what if there was a way to check if the bike you were buying had been stolen?</p>
         <p>Thus, the Detroit Bike Blacklist was born.</p>
         <h2>The Real Purpose</h2>
         <p>However, aside from creating a solution for bike theft reporting, I have a devious underlying plan.</p>
         <p>I don't believe the goal here is to stop bike theft. Bike theft is a symptom, not a root problem. Don't get me wrong, it sucks to get your bike stolen. But that doesn't mean that the person who stole it isn't in a worse position than you.</p>
         <p>I'm giving them the benefit of the doubt here: If they could choose, they wouldn't choose to steal bikes.</p>
-        <p>Now I have no idea what the solution for this larger problem is, because I don't believe you can even talk about solutions until you understand what's going on in the first place.</p>
+        <p>Now I have no idea what the solution for this larger problem is because I don't believe you can even talk about solutions until you understand what's going on in the first place.</p>
         <p>I want to understand bike theft, the systemic causes of it, and I want to gather that data and make it publicly accessible to inform a larger discussion.</p>
         <p>I created this site with this goal in the forefront.</p>
         <blockquote>

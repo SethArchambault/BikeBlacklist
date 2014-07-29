@@ -9,7 +9,12 @@ h1 {
 }
 
 #bike-date {
-    font-size: 30px;
+    font-size: 22px;
+}
+@media (min-width: 768px) {
+    #bike-date {
+        font-size: 30px;
+    }
 }
 
 #bike-description {

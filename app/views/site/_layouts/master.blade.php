@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<!-- come, bask in the glory of bootstrap -->
 <html>
 <head>
     <link rel="shortcut icon" href="/favicon.ico">
@@ -17,9 +18,9 @@
 
 </head>
 <body>
-	<div id="announcement-bar">
-		I'm working on this site as we speak. It will be officially live <b>July 30th 2014</b> (my Detroitiversery) - Seth
-	</div>
+<!--	<div id="announcement-bar">
+		This will be officially live <b>July 30th 2014</b> (my Detroitiversery) - Seth
+	</div> -->
     @section('nav')
 		<nav class="navbar navbar-default" role="navigation">
 	        <div class="container">
@@ -35,13 +36,11 @@
 			    <a class="navbar-brand" href="/"><img src="/images/detroit_bike_blacklist_header_logo.png" alt="Detroit Bike Blacklist"></a>
 			  </div>
 
-			  <!-- Collect the nav links, forms, and other content for toggling -->
 			  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			    <ul class="nav navbar-nav">
 			    </ul>
 				  <ul class="nav navbar-nav navbar-right">
-			        <li><a href="/">LOST BIKES</a></li>
-<!--			        <li><a href="/about">ABOUT</a></li>-->
+			        <li><a href="/">HOME</a></li>
 			        <li><a href="/about">ABOUT</a></li>
 			        <li><a href="/feedback">FEEDBACK</a></li>
                     <li class="li-missing-bike"><a href="/my-bike-is-missing" class="btn-missing-bike">MY BIKE IS MISSING</a></li>

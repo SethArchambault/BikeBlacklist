@@ -37,7 +37,7 @@
 		<div class="subtext col-sm-12 text-center">
             <h1>GOOD BIKE, GO HOME</h1>
             These are all the bikes missing in Detroit.<br>
-            If you find one or (ugh) buy one click “I&nbsp;FOUND&nbsp;IT” <br>
+            If you find one or (ugh) buy one, click “I&nbsp;FOUND&nbsp;IT” <br>
             to send the owner a message
         </div>
         <div style="padding-bottom:15px;" class="visible-xs"><a href="/my-bike-is-missing" class="btn btn-block btn-primary">MY BIKE IS MISSING</a></div>
@@ -50,7 +50,7 @@
 				<p>If you've had your bike stolen, I would really appreciate it if you take 12 seconds to report it.</p>
 				<p>It's painless, I promise. Thank you!</p>
 
-		        <div style="padding:15px 0 0;" class="hidden-xs"><a href="/my-bike-is-missing" class="btn btn-primary">MY BIKE IS MISSING</a></div>
+		        <div style="padding:15px 0 0;"><a href="/my-bike-is-missing" class="btn btn-primary">MY BIKE IS MISSING</a></div>
 			
 				</div>
 			@endif
@@ -76,13 +76,13 @@
 				?>
 			@endforeach
 		</div>
+		<!--
 				<div class="alert alert-info" role="alert">
-				<p>I've just put this site out into the world, and the first bike has already been submitted. Thank you!</p>
-				<p>But before I begin driving traffic to the site, I'd like to have as many bikes on the site as possible.</p>
-				<p>If you've had your bike stolen, I would really appreciate it if you take 12 seconds to report it.</p>
+				<p>I've just put this site out into the world, and the first bike has already been submitted. Thank you! But before I begin driving traffic to the site, I'd like to have as many bikes on the site as possible. If you've had your bike stolen, I would really appreciate it if you take 12 seconds to report it.</p>
 				<p>It's painless, I promise. Thanks!</p>
 		        <div style="padding:15px 0 0;" class="hidden-xs"><a href="/my-bike-is-missing" class="btn btn-primary">MY BIKE IS MISSING</a></div>
 				</div>
+				-->
 	</div>
 
 	@include('site._partials.foundit_modal')

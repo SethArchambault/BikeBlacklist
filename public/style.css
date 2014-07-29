@@ -28,6 +28,11 @@ label {
     color:#363636;
 }
 
+
+.form-control {
+    font-size: 16px;
+}
+
 #announcement-bar {
     background-color:#333; width:100%; padding:10px 10px; text-align:center; color:#fff;
 }

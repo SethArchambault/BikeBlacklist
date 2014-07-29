@@ -23,7 +23,7 @@
 .div-bike .description {
     color:#707070;
     padding: 0 8px;
-    height: 55px;
+    min-height: 109px;
 }
 
 .btn-i-found-it {
