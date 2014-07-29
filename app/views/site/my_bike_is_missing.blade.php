@@ -67,7 +67,7 @@
 
 				    <div class="row" style="padding-top:15px;">
                         <div class="col-sm-5 col-md-4 col-lg-3">
-                            {{ Form::submit('SEND', array('class' => 'btn btn-primary btn-block btn-lg')) }}
+                            {{ Form::submit('SEND', array('id' => 'submit-btn-js', 'class' => 'btn btn-primary btn-block btn-lg')) }}
                         </div>
 				    </div>
 			    </div>
@@ -98,6 +98,11 @@
 			var bike_uid = word_array.join("-").toLowerCase();
 			$('#uniqueUrlJS').text("http://bikeblacklist.com/"+ bike_uid);
 		});
+
+        $('#submit-btn-js').click(function(e) {
+            $(this).val('SENDING');
+            // $(this).prop('disabled', true);
+        });
 	});
 
 </script>
