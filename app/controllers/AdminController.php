@@ -121,4 +121,18 @@ class AdminController extends BaseController {
         $data['photo'] = Helper::SaveBikePhoto(Input::file('photo'), Config::get('app.file_dir'));
         return View::make('admin.image_resizing', ['data' => $data]);
     }
+
+    public function send_test_email_to_admin()
+    {
+
+            $data['bike_owner_email'] = "test@test.com";
+            $data['url'] = "http://detroitbikeblacklist.com/bike/1974-schwinn-le";
+
+            // send message to admin
+            Mail::send('emails.hello_admin', $data, function($message)
+            {
+                    $message->to('hellofriend@detroitbikeblacklist.com', 'Seth Archambault')->subject('Sorry about your bike');
+            });
+            return Redirect::to('/admin/user_index')->with('message', 'Test email sent to admin');
+    }
 }

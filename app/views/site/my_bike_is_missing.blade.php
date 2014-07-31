@@ -29,7 +29,7 @@
 
                         </div>
                     </div>
-				    <p class="help-block">Upload the clearest photo of your bike</p>
+				    <p class="help-block">Upload the clearest photo of your bike - make sure it's right side up!</p>
 				    {{ Form::file('photo', ['id' => 'photo', 'style' => 'display:none;']) }}				
 			    </div>
 				<div class="form-group">

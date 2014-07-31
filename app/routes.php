@@ -50,5 +50,6 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
 	Route::get('user_delete/{id}', ['uses' => 'AdminController@user_delete']);
 	Route::post('user_store', ['uses' => 'AdminController@user_store']);
 	Route::get('image_resizing', ['uses' => 'AdminController@image_resizing']);
+	Route::get('send_test_email_to_admin', ['uses' => 'AdminController@send_test_email_to_admin']);
 	Route::post('image_resizing', ['uses' => 'AdminController@image_resizing_post']);
 });

@@ -121,7 +121,7 @@ class SiteController extends \BaseController {
             // send message to admin
             Mail::send('emails.hello_admin', $data, function($message)
             {
-                    $message->to('hellofriend@detroitbikeblacklist.com', 'Seth Archambault')->subject('Blikelist - Missing Bike Reported');
+                    $message->to('hellofriend@detroitbikeblacklist.com', 'Seth Archambault')->subject('Sorry about your bike');
             });
 
             return Redirect::to('/bike/' . $bike->bike_uid)->with('message', "Thanks for reporting your bike! Check your email for next steps.");

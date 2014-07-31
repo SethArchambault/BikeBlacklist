@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/bike_style.css">
 
 <!-- for Google -->
-<meta name="description" content="{{ $bike->description }}" />
+<meta name="description" content="{{ preg_replace('/[^A-Za-z0-9\- ]/', '', $bike->description) }}" />
 <meta name="keywords" content="detroit, mssing, stolen, bike, bicycle" />
 
 <meta name="author" content="Blikelist" />
@@ -20,12 +20,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:image" content="{{ $bike->photo }}" />
 <meta property="og:url" content="http://blikelist.com/{{ $bike->bike_uid }}" />
-<meta property="og:description" content="{{ $bike->description }}" />
+<meta property="og:description" content="{{ preg_replace('/[^A-Za-z0-9\- ]/', '', $bike->description) }}" />
 
 <!-- for Twitter -->          
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="My Bike is Missing" />
-<meta name="twitter:description" content="{{ $bike->description }}" />
+<meta name="twitter:description" content="{{ preg_replace('/[^A-Za-z0-9\- ]/', '', $bike->description) }}" />
 <meta name="twitter:image" content="{{ $bike->photo }}" />
 @stop
 

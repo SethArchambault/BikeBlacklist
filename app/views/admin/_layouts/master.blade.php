@@ -28,6 +28,7 @@
 		    	<li><a href="/admin/user_index">User Index</a></li>
 				<li><a href="/admin/bike_index">Bike Index</a></li>
 				<li><a href="/admin/image_resizing">Image Resizing</a></li>
+				<li><a href="/admin/send_test_email_to_admin">Send Test Email to Admin</a></li>
 				<li><a href="/login">Login</a></li>
 				<li><a href="/admin/logout">Logout</a></li>
 		    </ul>

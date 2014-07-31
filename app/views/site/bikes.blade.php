@@ -62,7 +62,7 @@
                     <div class="div-bike">
 					<a href="/bike/{{ $bike->bike_uid }}">
                         <img src="/uploads/thumb/{{ $bike->photo }}" width="100%"alt="">
-                        <div class="text-center date">{{ date('l,', strtotime($bike->lost_date)) }} {{ date('F jS', strtotime($bike->lost_date)) }} {{ date('Y') == date('Y', strtotime($bike->lost_date)) ? "" : date('Y', strtotime($bike->lost_date)) }}</div>
+                        <div class="text-center date">{{ date('Y') != date('Y', strtotime($bike->lost_date)) ? "" : date('l,', strtotime($bike->lost_date)) }} {{ date('F jS', strtotime($bike->lost_date)) }} {{ date('Y') == date('Y', strtotime($bike->lost_date)) ? "" : date('Y', strtotime($bike->lost_date)) }}</div>
                         <div class="description">{{ $bike->description }}</div>
                     </a>
 					    @if($bike->status == 0)
