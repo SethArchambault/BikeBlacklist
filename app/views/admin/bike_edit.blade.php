@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-4" style="padding-top:50px;">				
-				<form role="form" action="/admin/update/{{ $bike->id }}" method="post">
+				<form role="form" action="/admin/bike_update/{{ $bike->id }}" method="post">
 					<div class="form-group">
 						<label>id</label>
 						{{ $bike->id }}
@@ -22,8 +22,9 @@
 					{{ $bike->status }}
 					</div>				
 					<div class="form-group">
-					<label>photo</label>
-					{{ $bike->photo }}
+					<label>photo</label><br>
+					{{ $bike->photo }}<br>
+					<input type="checkbox" name="resave_photo_check" id="resave_photo_check"> <label for="resave_photo_check">Resave Photo</label>
 					</div>				
 					<div class="form-group">
 						<label>lost_date</label>

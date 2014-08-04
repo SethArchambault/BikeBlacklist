@@ -19,7 +19,7 @@
 </head>
 <body>
 <!--	<div id="announcement-bar">
-		This will be officially live <b>July 30th 2014</b> (my Detroitiversery) - Seth
+		And we're live. I'm blown away by the support, Thank you all!   
 	</div> -->
     @section('nav')
 		<nav class="navbar navbar-default" role="navigation">

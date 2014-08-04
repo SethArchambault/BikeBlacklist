@@ -36,6 +36,8 @@ Route::post('/store', array('as' => 'site.store', 'uses' => 'App\Controllers\Sit
 
 Route::get('/login/', ['uses' => 'AdminController@login']);
 Route::post('/admin/check_login', ['uses' => 'AdminController@check_login']);
+
+// ADMIN
 Route::group(['prefix' => 'admin', 'before' => 'auth'], function() 
 {
 	Route::get('logout/', ['uses' => 'AdminController@logout']);
@@ -52,4 +54,13 @@ Route::group(['prefix' => 'admin', 'before' => 'auth'], function()
 	Route::get('image_resizing', ['uses' => 'AdminController@image_resizing']);
 	Route::get('send_test_email_to_admin', ['uses' => 'AdminController@send_test_email_to_admin']);
 	Route::post('image_resizing', ['uses' => 'AdminController@image_resizing_post']);
+});
+
+// API
+
+Route::group(['prefix' => 'api/v1'], function() {		
+	Route::get('/', function() {
+		return Response::json(["status" => "error", "message" => "Nothing here. You're very close though."]);
+	});
+	Route::resource('bikes', 'ApiController');
 });

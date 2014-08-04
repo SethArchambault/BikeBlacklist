@@ -38,11 +38,13 @@ class AdminController extends BaseController {
 	}
     public function bike_update($id)
     {
-
+        $resave_photo = Input::get('resave_photo_check');
         $bike = Bike::find($id);
             $bike->description = Input::get('description');
             $bike->lost_date = Input::get('lost_date');
-            $bike->photo = Input::get('photo');
+            if ($resave_photo == "on") {
+                $bike->photo = Input::get('photo');
+            }
             $bike->save();
 
         return Redirect::to('/admin/bike_index');
