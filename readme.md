@@ -8,5 +8,5 @@ Everything should have APIs! Let me know if you have any suggestions for this: h
 
 Try these:
 
-> http://detroitbikeblacklist.com/api/v1/bikes
-> http://detroitbikeblacklist.com/api/v1/bikes/12
+    http://detroitbikeblacklist.com/api/v1/bikes
+    http://detroitbikeblacklist.com/api/v1/bikes/12
