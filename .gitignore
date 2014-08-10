@@ -10,3 +10,5 @@ sync_vendor_files.sh
 sync_all
 .idea
 ..bfg-report
+www-bikeblacklist.sublime-project
+www-bikeblacklist.sublime-workspace

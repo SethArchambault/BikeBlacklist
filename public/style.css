@@ -94,6 +94,12 @@ label {
 
 }
 
+/* FOOTER */
+
+.footer-divider {
+    color:#aaa;
+}
+
 /* for the scrunchy button */
 .navbar-default .navbar-toggle {
 	margin-top:42px;

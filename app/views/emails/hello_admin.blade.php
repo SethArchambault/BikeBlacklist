@@ -13,11 +13,12 @@
 <li>Where was it stolen?</li>
 <li>Do you know what time?</li>
 <li>How was it locked?</li>
+<li>Any lessons learned / suggestions for other people?</li>
 </ul>
 
 <p>If I can help in any way, hit me up!</p>
 
-<p>Thanks for being one of the first to post a bike to the site! Really appreciate it. </p>
+<p>Thanks for post your bike on the site! Really appreciate it. </p>
 
 <p>Thanks,<br>
 Seth</p>

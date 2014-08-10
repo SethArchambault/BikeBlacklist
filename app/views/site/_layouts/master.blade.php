@@ -62,9 +62,11 @@
     	</div>
         <div class="col-sm-3" id="footer-right">
             Detroit Bike Blacklist 2014<br>
-        	<a href="https://www.facebook.com/BikeBlacklist" target="_blank">Facebook</a>
-        	<a href="https://www.twitter.com/BikeBlacklist" target="_blank">Twitter</a>
-        	<a href="https://github.com/SethArchambault/BikeBlacklist" target="_blank">Github</a>
+        	<a href="https://www.facebook.com/BikeBlacklist" target="_blank">Facebook</a> <span class="footer-divider">|</span>
+        	<a href="https://www.twitter.com/BikeBlacklist" target="_blank">Twitter</a> <span class="footer-divider">|</span>
+        	<a href="https://trello.com/b/4bgrlZvK/detroit-bike-blacklist" target="_blank">Trello</a> <span class="footer-divider">|</span>
+        	<a href="https://github.com/SethArchambault/BikeBlacklist" target="_blank">Github</a> <span class="footer-divider">|</span>
+        	<a href="http://detroitbikeblacklist.com/api/v1/bikes" target="_blank">API</a>
         </div>
         </div>
     </div>

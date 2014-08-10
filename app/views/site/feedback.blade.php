@@ -15,13 +15,19 @@
 
     <h1>FEEDBACK</h1>
     <div class="row">
-        <p class="col-sm-9">Ultimately this site will not be useful without feedback from the biking community. Contact me personally using the form below, or start a discussion in the comments.  What
-            can this site do better? Anything broken? Leave your email if you want me to get back with you!</p>
+        <div class="col-sm-9">
+        <p>
+            Ultimately this site will not be useful without feedback from the biking community. What can this site do better? Anything broken? Let me know!
+        </p>
+        <p><a href="https://trello.com/b/4bgrlZvK/detroit-bike-blacklist" target="_blank"><span class="glyphicon glyphicon-arrow-right"></span> Vote Up New Features</a></li> 
+        <p><a href="https://www.facebook.com/BikeBlacklist"><span class="glyphicon glyphicon-arrow-right"></span> Discuss Ideas on Facebook</a></p>
+        </div>
+
     </div>
-    <hr>
     {{ Form::open(['route' => 'site.mail_feedback', 'files' => true, 'role' => 'form']) }}
+    <h2 id="contact-me">Send Me a Message</h2>
+    <p>Leave your email if you want me to get back with you.</p>
     <div class="form-group">
-        <label for="description">Message</label>
         <div class="row">
             <div class="col-sm-8 col-md-7 col-lg-6">
                 {{ Form::textarea('message', '',  ['id' => '', 'class' => 'form-control',  'rows' => 8, 'placeholder' => '']) }}
@@ -34,10 +40,10 @@
         </div>
     </div>
 
-            <p style="padding-top:10px;">Or give feedback publicly in the comments below.</p>
-
-
-       <div id="disqus_thread" style="padding-top:50px;"></div>
+    <hr>
+    <h2>Discuss Publicly</h2>
+    <p>Suggest features</p>
+   <div id="disqus_thread" style="padding-top:50px;"></div>
     <script type="text/javascript">
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = 'detroitbikeblacklist'; // required: replace example with your forum shortname
