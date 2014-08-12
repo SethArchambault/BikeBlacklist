@@ -38,16 +38,32 @@ class AdminController extends BaseController {
 	}
     public function bike_update($id)
     {
-        $resave_photo = Input::get('resave_photo_check');
         $bike = Bike::find($id);
-            $bike->description = Input::get('description');
-            $bike->lost_date = Input::get('lost_date');
-            if ($resave_photo == "on") {
-                $bike->photo = Input::get('photo');
-            }
-            $bike->save();
+        $bike->description = Input::get('description');
+        $bike->lost_date = Input::get('lost_date');
+        $bike->advice = Input::get('advice');
+        $bike->admin_notes = Input::get('admin_notes');
+        $bike->lost_time = strtotime(Input::get('lost_time_range'));
+        $bike->lost_neighborhood = Input::get('lost_neighborhood');
+        $bike->lost_county = Input::get('lost_county');
+        $bike->lost_state = Input::get('lost_state');
+        $bike->lost_city = Input::get('lost_city');
+        $bike->lost_postal_code = Input::get('lost_postal_code');
+        $bike->lost_street_number = Input::get('lost_street_number');
+        $bike->lost_formatted_address = Input::get('lost_formatted_address');
+        $bike->lost_latitude = Input::get('lost_latitude');
+        $bike->lost_longitude = Input::get('lost_longitude');
+        $bike->lost_location = Input::get('lost_location');
+        $bike->serial_num = Input::get('serial_num');
+        $bike->approx_value = Input::get('approx_value');
 
-        return Redirect::to('/admin/bike_index');
+        $resave_photo = Input::get('resave_photo_check');
+        if ($resave_photo == "on") {
+            $bike->photo = Input::get('photo');
+        }
+        $bike->save();
+
+        return Redirect::to('/admin/bike_index')->with('message', 'Bike saved');
     }
 
     public function bike_delete($id)

@@ -52,14 +52,14 @@
 					</div>				
 					<div class="form-group">
 						<label>approximate value</label>
-						<input type="text" class="form-control" name="approximate_value" value="{{ $bike->approximate_value }}">
+						<input type="text" class="form-control" name="approx_value" value="{{ $bike->approx_value }}">
 					</div>				
 				
 					<hr>
 					<h1>Lost</h1>
 					<div class="form-group">
 						<label>time range stolen</label>
-						<input type="text" class="form-control" name="lost_time_range" value="{{ $bike->lost_time_range }}">
+						<input type="text" class="form-control" name="lost_time_range" value="{{ date('g:i a', $bike->lost_time) }}">
 					</div> <!-- /.form-group -->
 					<!-- Lost -->
 
@@ -106,11 +106,11 @@
 					</div> <!-- /.form-group -->
 					<div class="form-group">
 						<label>admin notes</label>
-						<textarea class="form-control" name="lost_admin_notes"><?= $bike->admin_notes ?></textarea>	
+						<textarea class="form-control" name="admin_notes"><?= $bike->admin_notes ?></textarea>	
 					</div> <!-- /.form-group -->
 					<div class="form-group">
 						<label>Lessons Learned / Advice </label>
-						<textarea class="form-control" name="lost_advice"><?= $bike->advice ?></textarea>	
+						<textarea class="form-control" name="advice"><?= $bike->advice ?></textarea>	
 					</div> <!-- /.form-group -->
 					
 					<hr>
