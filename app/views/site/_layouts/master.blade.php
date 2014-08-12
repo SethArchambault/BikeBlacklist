@@ -19,7 +19,7 @@
 </head>
 <body>
 <!--	<div id="announcement-bar">
-		And we're live. I'm blown away by the support, Thank you all!   
+		See a bug? Report it,   
 	</div> -->
     @section('nav')
 		<nav class="navbar navbar-default" role="navigation">

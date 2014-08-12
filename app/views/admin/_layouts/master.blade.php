@@ -41,6 +41,7 @@
 	    </div>
 	@endif;
     @yield('main')
-
+    @section('footer')
+    @show
 </body>
 </html>

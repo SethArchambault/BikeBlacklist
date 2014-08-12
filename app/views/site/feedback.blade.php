@@ -26,7 +26,7 @@
     </div>
     {{ Form::open(['route' => 'site.mail_feedback', 'files' => true, 'role' => 'form']) }}
     <h2 id="contact-me">Send Me a Message</h2>
-    <p>Leave your email if you want me to get back with you.</p>
+    <p>I read each and every one of these. Leave your email if you want me to get back with you. (Definitely do this if you're having any trouble!)</p>
     <div class="form-group">
         <div class="row">
             <div class="col-sm-8 col-md-7 col-lg-6">
