@@ -12,3 +12,5 @@ sync_all
 ..bfg-report
 www-bikeblacklist.sublime-project
 www-bikeblacklist.sublime-workspace
+sync_stage
+sync_vendor_stage.sh
