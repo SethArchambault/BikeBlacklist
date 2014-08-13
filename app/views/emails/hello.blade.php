@@ -16,7 +16,7 @@ Help!  My bike has been stolen!  Will you keep an eye out for it?
 
 <p>3. Go to <a href="http://twitter.com">Twitter</a> and paste it.</p>
 
-<h1>With 3 Minutes More Minutes</h1>
+<h1>With 3 More Minutes</h1>
 <p>You can let the biking community know your bike is missing.</p>
 
 <p>1. Join this facebook group: <a href="https://www.facebook.com/groups/146048678917990/">Slow Roll</a></p>

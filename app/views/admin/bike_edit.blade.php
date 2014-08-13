@@ -59,7 +59,7 @@
 					<h1>Lost</h1>
 					<div class="form-group">
 						<label>time range stolen</label>
-						<input type="text" class="form-control" name="lost_time_range" value="{{ date('g:i a', $bike->lost_time) }}">
+						<input type="text" class="form-control" name="lost_time_range" value="{{ $bike->lost_time == 0 ? 0 : date('g:i a', $bike->lost_time) }}">
 					</div> <!-- /.form-group -->
 					<!-- Lost -->
 
@@ -106,7 +106,7 @@
 					</div> <!-- /.form-group -->
 					<div class="form-group">
 						<label>admin notes</label>
-						<textarea class="form-control" name="admin_notes"><?= $bike->admin_notes ?></textarea>	
+						<textarea class="form-control" name="admin_notes" style="height:150px;"><?= $bike->admin_notes ?></textarea>	
 					</div> <!-- /.form-group -->
 					<div class="form-group">
 						<label>Lessons Learned / Advice </label>
@@ -174,7 +174,8 @@ $('#geocode_js').click(function(e) {
 
 	var address_uri = encodeURI(address_value);
     var google_url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address_uri;
-	//&key=AIzaSyDl0sSvYHkf8eEhp8c8flYD6uI_81BVY8E
+    //+"&key=AIzaSyDl0sSvYHkf8eEhp8c8flYD6uI_81BVY8E";
+	//
 
     $.get(google_url, function(response){
     	if (typeof response != 'object') {

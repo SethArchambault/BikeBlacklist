@@ -40,18 +40,29 @@
                             </div>
                         </div>
                     <div class="row">
-                        <p class="help-block col-sm-8 col-md-7 col-lg-6">What else identifies your bike? Be brief - the first few words of this will appear as your unique url. <span id="uniqueUrlJS"></span></p>
+                        <p class="help-block col-sm-8 col-md-7 col-lg-6">What uniquely identifies your bike? Be brief - the first few words of this will appear as your unique url. <span id="uniqueUrlJS"></span></p>
 	                </div>
     		    </div>
+                <div class="form-group">
+                    <label for="date" class="">Location</label>
+                    <div class="row">
+                        <div class="input-group col-sm-5 col-md-4 col-lg-3">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></div>
+                            {{ Form::text('lost_location', '',  ['id' => 'lost_location', 'class' => 'form-control', 'placeholder' => 'Hastings and St. Antoine']) }}
+                        </div>
+                    </div> <!-- /.row -->
+                    <p class="help-block">The address or intersection you last saw your bike.</p>
+
+                </div>
 				<div class="form-group">
-                    <label for="date" class="">Date</label>
+                    <label for="date" class="">Location</label>
                     <div class="row">
                         <div class="input-group col-sm-5 col-md-4 col-lg-3">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
                             {{ Form::text('lost_date', $todays_date,  ['id' => 'lost_date', 'class' => 'form-control', 'placeholder' => 'mm/dd/yyyy']) }}
                         </div>
                     </div> <!-- /.row -->
-				    <p class="help-block">When did this happen?</p>
+                    <p class="help-block">When did this happen?</p>
 				</div>
 				<div class="form-group">
                     <label for="email" class="">Email</label>

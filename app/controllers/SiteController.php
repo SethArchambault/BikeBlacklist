@@ -75,6 +75,7 @@ class SiteController extends \BaseController {
             $description = Input::get('description');
             $lost_date = Input::get('lost_date');
             $email = Input::get('email');
+            $lost_location = Input::get('lost_location');
             $photo_filename = Helper::SaveBikePhoto(Input::file('photo'), Config::get('app.file_dir'));
             // build unique id
 
@@ -104,6 +105,7 @@ class SiteController extends \BaseController {
             $bike->email = $email;
             $bike->status = 0;
             $bike->bike_uid = $bike_uid;
+            $bike->lost_location = $lost_location;
             $bike->found_key = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 1).substr(md5(time()),1);
             $bike->save();
 
