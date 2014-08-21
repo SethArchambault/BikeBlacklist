@@ -27,7 +27,7 @@ class Helper
 
         // save large
         $image_obj->reset();
-        $image_obj->fit(800,800);
+        $image_obj->fit(800,535);
         $image_obj->save($path['public_upload_dir'] . $path['large']);
 
         // create a image size

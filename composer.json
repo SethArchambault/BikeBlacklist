@@ -10,7 +10,8 @@
         "imagine/Imagine": "v0.4.1",
         "intervention/image": "2.*",
         "RobBrazier/Piwik": "dev-master",
-        "barryvdh/laravel-ide-helper": "1.*"
+        "barryvdh/laravel-ide-helper": "1.*",
+        "raven/raven": "dev-master"
     },
     "autoload": {
         "classmap": [
