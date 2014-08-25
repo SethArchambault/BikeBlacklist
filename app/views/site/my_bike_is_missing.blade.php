@@ -55,7 +55,7 @@
 
                 </div>
 				<div class="form-group">
-                    <label for="date" class="">Location</label>
+                    <label for="date" class="">Date Lost</label>
                     <div class="row">
                         <div class="input-group col-sm-5 col-md-4 col-lg-3">
                             <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
