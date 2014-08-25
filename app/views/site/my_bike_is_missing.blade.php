@@ -32,7 +32,7 @@
 				    <p class="help-block">Upload the clearest photo of your bike - make sure it's right side up!</p>
 				    {{ Form::file('photo', ['id' => 'photo', 'style' => 'display:none;']) }}				
 			    </div>
-				<div class="form-group">
+                <div class="form-group">                
                     <label for="description">Description</label>
                         <div class="row">
                             <div class="col-sm-8 col-md-7 col-lg-6">
@@ -41,8 +41,8 @@
                         </div>
                     <div class="row">
                         <p class="help-block col-sm-8 col-md-7 col-lg-6">What uniquely identifies your bike? Be brief - the first few words of this will appear as your unique url. <span id="uniqueUrlJS"></span></p>
-	                </div>
-    		    </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="date" class="">Location</label>
                     <div class="row">

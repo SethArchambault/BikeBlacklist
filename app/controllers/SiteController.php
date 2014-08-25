@@ -7,6 +7,7 @@ use Illuminate\Queue\Queue;
 use Mail;
 use Log;
 use Whoops\Example\Exception;
+use Session;
 
 class SiteController extends \BaseController {
 
@@ -42,6 +43,17 @@ class SiteController extends \BaseController {
         public function my_bike_is_missing()
         {
                 return View::make('site.my_bike_is_missing')->with('todays_date', date('m/d/Y'));
+        }
+        public function more_details()
+        {
+            die(App::environment());
+
+            if (!Session::has('bike_id')) {
+                Log::error("SiteController - function more_details - bike_id was not found in session");
+                return Redirect::to('/')->with('message', "Your bike has been submitted, but something went wrong.");
+            }
+
+            return View::make('site.more_details');
         }
 
 
@@ -109,10 +121,13 @@ class SiteController extends \BaseController {
             $bike->found_key = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 1).substr(md5(time()),1);
             $bike->save();
 
+            
             // send welcome email
 
             $data['bike_owner_email'] = $bike->email;
             $data['url'] = "http://detroitbikeblacklist.com/bike/". $bike->bike_uid;
+
+            // check if this is being run locally
 
             // send message to bike owner
             Mail::send('emails.hello', $data, function($message) use ($data)
@@ -126,7 +141,15 @@ class SiteController extends \BaseController {
                     $message->to('hellofriend@detroitbikeblacklist.com', 'Seth Archambault')->subject('Sorry about your bike');
             });
 
-            return Redirect::to('/bike/' . $bike->bike_uid)->with('message', "Thanks for reporting your bike! Check your email for next steps.");
+            if (!is_int($bike->id)) {
+                Log::error("bike->id is not int - it is ". $bike->id . " something is wrong, probably not saved correctly");
+                return Redirect::to('/bike/' . $bike->bike_uid)->with('message', "Thanks for reporting your bike! Check your email for next steps.");
+            }
+
+            Session::put('bike_id', $bike->id);
+
+            return Redirect::to('/')->with('message', "Thanks for reporting your bike! Check your email for next steps.");
+
         }
 
         public function bike_stored()

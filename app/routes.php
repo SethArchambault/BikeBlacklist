@@ -31,7 +31,12 @@ Route::post('/mail_feedback', ['as' => 'site.mail_feedback', 'uses' => 'App\Cont
 Route::get('/about', ['uses' => 'App\Controllers\SiteController@about']);
 Route::get('/bike_stored', ['uses' => 'App\Controllers\SiteController@bike_stored']);
 
-Route::get('/my-bike-is-missing', array('as' => 'site.my_bike_is_missing', 'uses' => 'App\Controllers\SiteController@my_bike_is_missing'));
+Route::get('/my-bike-is-missing', [
+	'as' => 'site.my_bike_is_missing', 
+	'uses' => 'App\Controllers\SiteController@my_bike_is_missing']);
+Route::get('/more-details', [
+	'as' => 'site.more_details',
+	'uses' => 'App\Controllers\SiteController@more_details']);
 Route::post('/store', array('as' => 'site.store', 'uses' => 'App\Controllers\SiteController@store'));
 
 Route::get('/login/', ['uses' => 'AdminController@login']);
