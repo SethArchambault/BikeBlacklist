@@ -51,9 +51,10 @@ App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
 	$client = new Raven_Client('https://f2594dc21e874fe386e734b507b22e3f:ab7d5a5d205b477ba3c50dd40669d9b6@app.getsentry.com/28709');
-	$handler = new Monolog\Handler\RavenHandler($client, Monolog\Logger::ERROR);
-	$handler->setFormatter(new Monolog\Formatter\LineFormatter("%message% %context% %extra%\n"));
-	$monolog->pushHandler($handler);
+	$client->captureMessage($exception);
+	// $handler = new Monolog\Handler\RavenHandler($client, Monolog\Logger::ERROR);
+	// $handler->setFormatter(new Monolog\Formatter\LineFormatter("%message% %context% %extra%\n"));
+	// $monolog->pushHandler($handler);
 });
 
 /*

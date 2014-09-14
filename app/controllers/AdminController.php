@@ -3,6 +3,7 @@
 use App\Models\Bike;
 use Helper\Helper;
 
+
 class AdminController extends BaseController {
 
     public function login() {
@@ -28,8 +29,9 @@ class AdminController extends BaseController {
     }
 
 	public function bike_index() {
-		$bikes = Bike::orderby('lost_date', 'desc')->get();
-		return View::make('admin.bike_index')->with('bikes', $bikes); 
+        $send_email = Config::get('app.send_email');
+		$bikes = Bike::orderby('created_at', 'desc')->get();
+		return View::make('admin.bike_index')->with(['bikes' => $bikes, 'total_bike_num' => count($bikes), 'send_email' => $send_email]); 
 	}
 	public function bike_edit($id) {
 
@@ -56,10 +58,15 @@ class AdminController extends BaseController {
         $bike->lost_location = Input::get('lost_location');
         $bike->serial_num = Input::get('serial_num');
         $bike->approx_value = Input::get('approx_value');
+        $bike->bike_placement = Input::get('bike_placement');
+        $bike->lock_type = Input::get('lock_type');
+        $bike->lock_method = Input::get('lock_method');
+        $bike->theft_desc = Input::get('theft_desc');
 
         $resave_photo = Input::get('resave_photo_check');
         if ($resave_photo == "on") {
-            $bike->photo = Input::get('photo');
+            $bike->photo = Helper::SaveBikePhoto(Input::file('photo'), Config::get('app.file_dir'));
+
         }
         $bike->save();
 

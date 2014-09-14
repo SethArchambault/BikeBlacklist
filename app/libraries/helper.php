@@ -9,6 +9,7 @@ class Helper
 {
     public static function SaveBikePhoto($photo_file_input, $file_dir)
     {
+        // evaluate photo_file_input throw errors
         // photo
         $filename['source'] = $photo_file_input->getClientOriginalName();
         $filename['basic'] = date("Y-m-d_H-i_") . $filename['source'];

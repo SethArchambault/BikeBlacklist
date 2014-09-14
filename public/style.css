@@ -28,6 +28,17 @@ label {
     color:#363636;
 }
 
+.alert-info {
+    color: #ffeae2;
+    background-color: #fa7443;
+    border-color: #cd572c;
+    text-align: center;
+}
+
+.alert-info h1, .alert-info h2, .alert-info h3 {
+    color: #ffffff;
+    margin-top: 10px;
+}
 
 .form-control {
     font-size: 16px;

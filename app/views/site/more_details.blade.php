@@ -12,14 +12,13 @@
 @section('main')
 	<div class="container fuelux" id="main">
 		<!-- Button trigger modal -->
-        @include('site._partials.flash_message')
 		<h1>SUCCESS</h1>
+        @include('site._partials.flash_message')
         <p><strong>...But Before You Go</strong></p>
         <div class="row">
-        <p class="col-sm-9">Do you have a few more minutes? If so, here’s some other fields that will help get your bike back! You don’t have to do them all now, you can always fill this out later just remember to scroll down and save! </p>
+        <p class="col-sm-9">If you have 3 more minutes here’s some other fields that will help get your bike back!<!--<br>You don’t have to do them all now, you can always fill this out later. --></p>
         </div>
-        <hr>
-        {{ Form::open(['route' => 'site.store', 'files' => true, 'role' => 'form']) }}
+        {{ Form::open(['route' => 'site.store_more_details', 'files' => true, 'role' => 'form']) }}
             <div class="form-group">
                 <label for="description">Where was your bike placed?</label>
                     <div class="row">
@@ -28,7 +27,7 @@
                         </div>
                     </div>
                 <div class="row">
-                    <p class="help-block col-sm-8 col-md-7 col-lg-6">Was your bike in your garage? On your porch? On a parking meter? </p>
+                    <p class="help-block col-sm-8 col-md-7 col-lg-6">Was your bike in your garage? On your porch? On a parking meter? Was it well lit?</p>
                 </div>
             </div>
             <div class="form-group">
@@ -46,18 +45,18 @@
                 <label for="description">How Was It Locked?</label>
                     <div class="row">
                         <div class="col-sm-8 col-md-7 col-lg-6">
-                            {{ Form::textarea('bike_placement', '',  ['class' => 'form-control', 'maxlength' => 140, 'rows' => 2, 'placeholder' => 'I locked up the top tube.']) }}
+                            {{ Form::textarea('lock_method', '',  ['class' => 'form-control', 'maxlength' => 140, 'rows' => 2, 'placeholder' => 'I locked up the top tube.']) }}
                         </div>
                     </div>
                 <div class="row">
-                    <p class="help-block col-sm-8 col-md-7 col-lg-6">What part of the bike did you lock? This chart may help. In chart: On the tire etween the chainstays and the seat stays) </p>
+                    <p class="help-block col-sm-8 col-md-7 col-lg-6">What part of the bike did you lock? <a href="http://www.jimlangley.net/wrench/bicycleparts.html" target="_blank">This chart may help</a>. </p>
                 </div>
             </div>
             <div class="form-group">
                 <label for="description">How Was It Stolen?</label>
                     <div class="row">
                         <div class="col-sm-8 col-md-7 col-lg-6">
-                            {{ Form::textarea('bike_placement', '',  ['class' => 'form-control', 'maxlength' => 140, 'rows' => 2, 'placeholder' => 'When I came out of my house - I found the lock cut in half.']) }}
+                            {{ Form::textarea('theft_desc', '',  ['class' => 'form-control', 'maxlength' => 140, 'rows' => 2, 'placeholder' => 'When I came out of my house - I found the lock cut in half.']) }}
                         </div>
                     </div>
                 <div class="row">
@@ -66,10 +65,10 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Advice</label>
+                <label for="description">Advice for Others</label>
                     <div class="row">
                         <div class="col-sm-8 col-md-7 col-lg-6">
-                            {{ Form::textarea('bike_placement', '',  ['class' => 'form-control', 'maxlength' => 140, 'rows' => 2, 'placeholder' => 'Always lock up your bike.']) }}
+                            {{ Form::textarea('advice', '',  ['class' => 'form-control', 'maxlength' => 140, 'rows' => 2, 'placeholder' => 'Always lock up your bike.']) }}
                         </div>
                     </div>
                 <div class="row">
@@ -81,15 +80,16 @@
                 <div class="row">
                     <div class="input-group col-sm-5 col-md-4 col-lg-3">
                         <div class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></div>
-                        {{ Form::text('lost_location', '',  ['id' => 'lost_location', 'class' => 'form-control', 'placeholder' => '270821']) }}
+                        {{ Form::text('serial_num', '',  ['id' => 'lost_location', 'class' => 'form-control', 'placeholder' => '270821, for example']) }}
                     </div>
                 </div> <!-- /.row -->
                 <p class="help-block">This is usually found on the bottom of the bike between the pedals.</p>
-
+                <div class="row" style="padding-top:15px;">
+                    <div class="col-sm-5 col-md-4 col-lg-3">
+                        {{ Form::submit('SAVE', array('id' => 'submit-btn-js', 'class' => 'btn btn-primary btn-block btn-lg')) }}
+                    </div>
+                </div>
             </div>
-
-
-
 
         {{ Form::close() }}
 

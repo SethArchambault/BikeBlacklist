@@ -35,12 +35,8 @@
 
 		  </div><!-- /.navbar-collapse -->
 		</nav>
-	@if(Session::has('message'))
-	    <div class="alert alert-info">
-	        <h2>{{ Session::get('message') }}</h2>
-	    </div>
-	@endif;
     @yield('main')
+	<script type="text/javascript" src="/lib/jquery/jquery-1.10.2.min.js"></script>
     @section('footer')
     @show
 </body>

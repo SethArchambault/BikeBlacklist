@@ -2,12 +2,19 @@
 
 @section('main')
 	<div class="container">
+		@include('site._partials.flash_message')
+
 		<br><br>
+		<div class="text-center" style="padding-bottom:15px;">{{ $total_bike_num }} Bikes</div>
+		<div class="text-center" style="padding-bottom:15px;">send_email = {{ var_dump($send_email) }}
+		</div>
+
 		<table class="table table-bordered">
 			<tr>
 				<th>email</th>
 				<th>description</th>
 				<th>location</th>
+				<th>longitude</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -16,6 +23,7 @@
 				<td>{{ $bike->email }}</td>
 				<td>{{ $bike->description }}</td>
 				<td>{{ $bike->lost_location }}</td>
+				<td>{{ $bike->lost_longitude }}</td>
 				<td><a href="/bike/{{ $bike->bike_uid }}" target="_blank">View</a></td>
 				<td><a href="/admin/bike_edit/{{ $bike->id }}">Edit</a></td>
             </tr>

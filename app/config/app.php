@@ -13,8 +13,12 @@ return array(
     |
     */
 
-    'debug' => true,
+    'debug' => false,
 
+    'dev_mode' => false,
+
+    'send_email' => true,
+    
     'file_dir' => "uploads/",
 
     'cipher' => MCRYPT_RIJNDAEL_256,

@@ -1,3 +1,12 @@
+
+@media (min-width: 768px) { 
+    .subtext {
+        padding-bottom: 50px;
+    }
+}
+
+
+
 .div-bike {
     background: #ededed;
     border-radius: 5px;

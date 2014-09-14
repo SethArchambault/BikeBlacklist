@@ -15,7 +15,10 @@
     @section('header')
 
     @show
-
+	<script type="text/javascript">
+	    var _bftn_options = { animation: 'banner' }
+	</script>
+	<script src="//widget.battleforthenet.com/widget.min.js" async></script>
 </head>
 <body>
 <!--	<div id="announcement-bar">
@@ -57,10 +60,10 @@
 <div id="footer">
     <div class="container" >
     	<div class="row">
-    	<div class="col-sm-9">
+    	<div class="col-sm-7">
 	        <a href="/feedback">Comments? Feedback? I want them!</a>       
     	</div>
-        <div class="col-sm-3" id="footer-right">
+        <div class="col-sm-5" id="footer-right">
             Detroit Bike Blacklist 2014<br>
         	<a href="https://www.facebook.com/BikeBlacklist" target="_blank">Facebook</a> <span class="footer-divider">|</span>
         	<a href="https://www.twitter.com/BikeBlacklist" target="_blank">Twitter</a> <span class="footer-divider">|</span>

@@ -23,9 +23,23 @@
 					</div>				
 					<div class="form-group">
 					<label>photo</label><br>
-					{{ $bike->photo }}<br>
+					<br>
 					<input type="checkbox" name="resave_photo_check" id="resave_photo_check"> <label for="resave_photo_check">Resave Photo</label>
-					</div>				
+					</div>			
+				    <div class="form-group">
+	                    <label for="photo">Bike Photo</label>
+	                    <div class="row">
+	                        <div class="input-group col-sm-5 col-md-4 col-lg-3">
+	                            <div class="input-group-addon"><span class="glyphicon glyphicon-camera"></span></div>
+	                            <input type="text" class="form-control" name="subfile" id="subfile" value="{{ $bike->photo }}">
+	                            <div class="input-group-btn"><a class="btn btn-default" id="subbutton">Browse</a></div>
+
+	                        </div>
+	                    </div>
+					    <p class="help-block">Upload the clearest photo of your bike - make sure it's right side up!</p>
+					    {{ Form::file('photo', ['id' => 'photo', 'style' => 'display:none;']) }}				
+				    </div>
+
 					<div class="form-group">
 						<label>lost_date</label>
 						<input type="text" class="form-control" name="lost_date" value="{{ $bike->lost_date }}">
@@ -108,6 +122,24 @@
 						<label>admin notes</label>
 						<textarea class="form-control" name="admin_notes" style="height:150px;"><?= $bike->admin_notes ?></textarea>	
 					</div> <!-- /.form-group -->
+					<h1>More Details</h1>
+					<!-- more details -->
+					<div class="form-group">
+						<label>Bike Placement</label>
+						<input type="text" class="form-control" name="bike_placement" value="{{ $bike->bike_placement }}">
+					</div> <!-- /.form-group -->
+					<div class="form-group">
+						<label>Lock Type</label>
+						<input type="text" class="form-control" name="lock_type" value="{{ $bike->lock_type }}">
+					</div> <!-- /.form-group -->
+					<div class="form-group">
+						<label>Lock Method</label>
+						<input type="text" class="form-control" name="lock_method" value="{{ $bike->lock_method }}">
+					</div> <!-- /.form-group -->
+					<div class="form-group">
+						<label>Theft Description</label>
+						<input type="text" class="form-control" name="theft_desc" value="{{ $bike->theft_desc }}">
+					</div> <!-- /.form-group -->
 					<div class="form-group">
 						<label>Lessons Learned / Advice </label>
 						<textarea class="form-control" name="advice"><?= $bike->advice ?></textarea>	
@@ -128,6 +160,9 @@
 						<label>found latitude</label>
 						<input type="text" class="form-control" name="found_latitude" value="{{ $bike->found_latitude }}">
 					</div> <!-- /.form-group -->
+					
+
+
 
 					<input type="submit" value="Save" class="btn btn-primary">
 				</form>
@@ -138,166 +173,176 @@
 @stop
 
 @section('footer')
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script>	
-
-
-$('#geocode_js').click(function(e) {
-	e.preventDefault();
-	// check if lost location has input
-	var address_detail_obj = {};
-
-	var address_value = $.trim($('#lost_location').val());
-
-	if (address_value == "") {
-		console.log('Nothing entered');
-		return false;
-	}
-
-	var wdwot_url = "https://stage.whydontweownthis.com/search.json?query="+encodeURI(address_value);
-	$.get(wdwot_url, function(data) {
-		if (typeof data.results === 'undefined') {
-			console.log('data.results is undefined');
-			return false;
-		}
-		if (data.results.length <= 0) {
-			console.log('address_components array has no length');
-		}
-		address_detail_obj.wdwot = data.results[0];
-	})
-	.fail(function(data) {
-		console.log("Error: Status " + data.status);
+<script type="text/javascript">
+	$(function() {
+	$('#subbutton').click(function() {
+		alert('subbutton click');
+		$('#photo').click();
 	});
 
-    address_value = address_value + " Detroit, MI";
+	$('#photo').change(function(){
+		alert('photo change');
+		alert($(this).val());
+		$('#subfile').val($(this).val());
+	});
 
 
-	var address_uri = encodeURI(address_value);
-    var google_url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address_uri;
-    //+"&key=AIzaSyDl0sSvYHkf8eEhp8c8flYD6uI_81BVY8E";
-	//
+	$('#geocode_js').click(function(e) {
+		e.preventDefault();
+		// check if lost location has input
+		var address_detail_obj = {};
 
-    $.get(google_url, function(response){
-    	if (typeof response != 'object') {
-    		console.log('Response is not JSON');
-    		return false;
-    	}
-		// check if response has results
-		if (typeof response.results === 'undefined') {
-			console.log('response.results is undefined');
+		var address_value = $.trim($('#lost_location').val());
+
+		if (address_value == "") {
+			console.log('Nothing entered');
 			return false;
 		}
 
-		var results_array = response.results;
-		if( Object.prototype.toString.call( results_array ) !== '[object Array]' ) {
-			console.log('response.results is not an Array');
-			return false;
-		}
-		var result_first_obj = results_array[0];
-
-		if (typeof result_first_obj.formatted_address === 'undefined') {
-			console.log('result_first_obj.formatted_address is undefined');
-			return false;
-		}
-		var formatted_address = result_first_obj.formatted_address;
-		if (formatted_address == "Detroit, MI, USA") {
-			console.log('not found');
-			return false;
-		}
-
-		// check if geometry exists
-		if (typeof result_first_obj.geometry === 'undefined') {
-			console.log('result_first_obj.geometry is undefined');
-			return false;
-		}
-		var geometry = result_first_obj.geometry;
-
-		// check if location exists
-		if (typeof geometry.location === 'undefined') {
-			console.log('geometry.location is undefined');
-			return false;
-		}
-		var location = geometry.location;
-
-		// check if lat exists
-		if (typeof location.lat === 'undefined') {
-			console.log('location.lat is undefined');
-			return false;
-		}
-		address_detail_obj.latitude = location.lat;
-
-		// check if lat exists
-		if (typeof location.lng === 'undefined') {
-			console.log('location.lng is undefined');
-			return false;
-		}
-		address_detail_obj.longitude = geometry.location.lng;
-		address_detail_obj.formatted_address = formatted_address;
-
-		// check if geometry.viewport
-		if (typeof geometry.viewport === 'undefined') {
-			console.log('geometry.viewport is undefined');
-			return false;
-		}
-		address_detail_obj.google_viewport = geometry.viewport;
-
-		if (typeof result_first_obj.address_components === 'undefined') {
-			console.log('result_first_obj.address_components is undefined');
-			return false;
-		}
-		var address_components = result_first_obj.address_components;
-
-		if( Object.prototype.toString.call( address_components ) !== '[object Array]' ) {
-			console.log('address_components is not an Array');
-			return false;
-		}
-
-		var type;
-		if (address_components.length <= 0) {
-			console.log('address_components array has no length');
-		}
-		for (var n = 0; n < address_components.length; n++) {
-			if (address_components[n].types.length <= 0) {
-				console.log('address_components['+n+'].types array has no length');
+		var wdwot_url = "https://stage.whydontweownthis.com/search.json?query="+encodeURI(address_value);
+		$.get(wdwot_url, function(data) {
+			if (typeof data.results === 'undefined') {
+				console.log('data.results is undefined');
+				return false;
 			}
-			for (var i = 0; i < address_components[n].types.length; i++) {
-				type = address_components[n].types[i];
-				if (type == 'street_number')
-					address_detail_obj.street_number = address_components[n].short_name;
-				if (type == 'neighborhood')
-					address_detail_obj.neighborhood = address_components[n].short_name;
-				if (type == 'locality') // find city
-					address_detail_obj.city = address_components[n].short_name;
-				if (type == 'administrative_area_level_1') // find state
-					address_detail_obj.state = address_components[n].short_name;
-				if (type == 'administrative_area_level_2') // find county
-					address_detail_obj.county = address_components[n].short_name;
-				if (type == 'postal_code')
-					address_detail_obj.postal_code = address_components[n].short_name;
-				if (type == 'country')
-					address_detail_obj.country = address_components[n].short_name;
+			if (data.results.length <= 0) {
+				console.log('address_components array has no length');
 			}
-		}
-		console.log(address_detail_obj);
+			address_detail_obj.wdwot = data.results[0];
+		})
+		.fail(function(data) {
+			console.log("Error: Status " + data.status);
+		});
+
+	    address_value = address_value + " Detroit, MI";
 
 
-		$('#lost_latitude').val(address_detail_obj.latitude);
-		$('#lost_longitude').val(address_detail_obj.longitude);
-		$('#lost_formatted_address').val(address_detail_obj.formatted_address);
-		$('#lost_postal_code').val(address_detail_obj.postal_code);
-		$('#lost_street_number').val(address_detail_obj.street_number);
-		$('#lost_state').val(address_detail_obj.state);
-		$('#lost_city').val(address_detail_obj.city);
-		$('#lost_county').val(address_detail_obj.county);
-		$('#lost_neighborhood').val(address_detail_obj.neighborhood);
+		var address_uri = encodeURI(address_value);
+	    var google_url = "https://maps.googleapis.com/maps/api/geocode/json?address="+address_uri;
+	    //+"&key=AIzaSyDl0sSvYHkf8eEhp8c8flYD6uI_81BVY8E";
+		//
 
-    })
-	.fail(function(data) {
-		console.log("Error: Status " + data.status);
-		return false;
+	    $.get(google_url, function(response){
+	    	if (typeof response != 'object') {
+	    		console.log('Response is not JSON');
+	    		return false;
+	    	}
+			// check if response has results
+			if (typeof response.results === 'undefined') {
+				console.log('response.results is undefined');
+				return false;
+			}
+
+			var results_array = response.results;
+			if( Object.prototype.toString.call( results_array ) !== '[object Array]' ) {
+				console.log('response.results is not an Array');
+				return false;
+			}
+			var result_first_obj = results_array[0];
+
+			if (typeof result_first_obj.formatted_address === 'undefined') {
+				console.log('result_first_obj.formatted_address is undefined');
+				return false;
+			}
+			var formatted_address = result_first_obj.formatted_address;
+			if (formatted_address == "Detroit, MI, USA") {
+				console.log('not found');
+				return false;
+			}
+
+			// check if geometry exists
+			if (typeof result_first_obj.geometry === 'undefined') {
+				console.log('result_first_obj.geometry is undefined');
+				return false;
+			}
+			var geometry = result_first_obj.geometry;
+
+			// check if location exists
+			if (typeof geometry.location === 'undefined') {
+				console.log('geometry.location is undefined');
+				return false;
+			}
+			var location = geometry.location;
+
+			// check if lat exists
+			if (typeof location.lat === 'undefined') {
+				console.log('location.lat is undefined');
+				return false;
+			}
+			address_detail_obj.latitude = location.lat;
+
+			// check if lat exists
+			if (typeof location.lng === 'undefined') {
+				console.log('location.lng is undefined');
+				return false;
+			}
+			address_detail_obj.longitude = geometry.location.lng;
+			address_detail_obj.formatted_address = formatted_address;
+
+			// check if geometry.viewport
+			if (typeof geometry.viewport === 'undefined') {
+				console.log('geometry.viewport is undefined');
+				return false;
+			}
+			address_detail_obj.google_viewport = geometry.viewport;
+
+			if (typeof result_first_obj.address_components === 'undefined') {
+				console.log('result_first_obj.address_components is undefined');
+				return false;
+			}
+			var address_components = result_first_obj.address_components;
+
+			if( Object.prototype.toString.call( address_components ) !== '[object Array]' ) {
+				console.log('address_components is not an Array');
+				return false;
+			}
+
+			var type;
+			if (address_components.length <= 0) {
+				console.log('address_components array has no length');
+			}
+			for (var n = 0; n < address_components.length; n++) {
+				if (address_components[n].types.length <= 0) {
+					console.log('address_components['+n+'].types array has no length');
+				}
+				for (var i = 0; i < address_components[n].types.length; i++) {
+					type = address_components[n].types[i];
+					if (type == 'street_number')
+						address_detail_obj.street_number = address_components[n].short_name;
+					if (type == 'neighborhood')
+						address_detail_obj.neighborhood = address_components[n].short_name;
+					if (type == 'locality') // find city
+						address_detail_obj.city = address_components[n].short_name;
+					if (type == 'administrative_area_level_1') // find state
+						address_detail_obj.state = address_components[n].short_name;
+					if (type == 'administrative_area_level_2') // find county
+						address_detail_obj.county = address_components[n].short_name;
+					if (type == 'postal_code')
+						address_detail_obj.postal_code = address_components[n].short_name;
+					if (type == 'country')
+						address_detail_obj.country = address_components[n].short_name;
+				}
+			}
+			console.log(address_detail_obj);
+
+
+			$('#lost_latitude').val(address_detail_obj.latitude);
+			$('#lost_longitude').val(address_detail_obj.longitude);
+			$('#lost_formatted_address').val(address_detail_obj.formatted_address);
+			$('#lost_postal_code').val(address_detail_obj.postal_code);
+			$('#lost_street_number').val(address_detail_obj.street_number);
+			$('#lost_state').val(address_detail_obj.state);
+			$('#lost_city').val(address_detail_obj.city);
+			$('#lost_county').val(address_detail_obj.county);
+			$('#lost_neighborhood').val(address_detail_obj.neighborhood);
+
+	    })
+		.fail(function(data) {
+			console.log("Error: Status " + data.status);
+			return false;
+		});
 	});
 });
-
 
 
 </script>

@@ -25,6 +25,7 @@ App::missing(function($exception)
 Route::get('/', array('as' => 'site.bikes', 'uses' => 'App\Controllers\SiteController@bikes'));
 Route::get('/found/{bike_id}', array('as' => 'site.found', 'uses' => 'App\Controllers\SiteController@found'));
 Route::get('/bike/{bike_uid}', array('as' => 'site.bike', 'uses' => 'App\Controllers\SiteController@bike'));
+Route::get('/print/{bike_uid}', array('as' => 'site.print', 'uses' => 'App\Controllers\SiteController@print_bike'));
 Route::post('/email', ['as' => 'site.email', 'uses' => 'App\Controllers\SiteController@email']);
 Route::get('/feedback', ['as' => 'site.feedback', 'uses' => 'App\Controllers\SiteController@feedback']);
 Route::post('/mail_feedback', ['as' => 'site.mail_feedback', 'uses' => 'App\Controllers\SiteController@mail_feedback']);
@@ -38,6 +39,7 @@ Route::get('/more-details', [
 	'as' => 'site.more_details',
 	'uses' => 'App\Controllers\SiteController@more_details']);
 Route::post('/store', array('as' => 'site.store', 'uses' => 'App\Controllers\SiteController@store'));
+Route::post('/store_more_details', array('as' => 'site.store_more_details', 'uses' => 'App\Controllers\SiteController@store_more_details'));
 
 Route::get('/login/', ['uses' => 'AdminController@login']);
 Route::post('/admin/check_login', ['uses' => 'AdminController@check_login']);

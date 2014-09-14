@@ -1,6 +1,6 @@
 <p>So sorry to hear your bike was stolen.  This sucks.  But you're doing all you can to get it back - that's all you can do.</p>
 
-<p>So you've submitted your bike on the Blikelist, but if you want to invest a little more time, you can multiply the chance of your bike coming back to you:</p>
+<p>So you've submitted your bike on the Blacklist, but if you want to invest a little more time, you can multiply the chance of your bike coming back to you:</p>
 
 <h1>With 1.5 Minutes</h1>
 <p>You can let everyone you know that your bike is missing:</p>
