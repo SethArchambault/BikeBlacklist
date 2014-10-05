@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 |--------------------------------------------------------------------------
 | Register The Laravel Class Loader
@@ -47,15 +46,37 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 |
 */
 
-App::error(function(Exception $exception, $code)
-{
-	Log::error($exception);
-	$client = new Raven_Client('https://f2594dc21e874fe386e734b507b22e3f:ab7d5a5d205b477ba3c50dd40669d9b6@app.getsentry.com/28709');
-	$client->captureMessage($exception);
-	// $handler = new Monolog\Handler\RavenHandler($client, Monolog\Logger::ERROR);
-	// $handler->setFormatter(new Monolog\Formatter\LineFormatter("%message% %context% %extra%\n"));
-	// $monolog->pushHandler($handler);
+App::error(function($exception) {
+    Log::error($exception);
+
+    if (Config::get('app.raven_errors')) {
+		$client = new Raven_Client('https://f2594dc21e874fe386e734b507b22e3f:ab7d5a5d205b477ba3c50dd40669d9b6@app.getsentry.com/28709');
+		// Capture a message
+		$event_id = $client->getIdent($client->captureMessage($exception));
+		if ($client->getLastError() !== null) {
+		    Log::error('There was an error sending the event to Sentry: %s', $client->getLastError());
+		}	    	
+    }
+
+    return Response::view('errors.missing', array(), 404);
 });
+
+App::missing(function($exception)
+{
+    Log::error($exception);
+
+    if (Config::get('app.raven_errors')) {
+		$client = new Raven_Client('https://f2594dc21e874fe386e734b507b22e3f:ab7d5a5d205b477ba3c50dd40669d9b6@app.getsentry.com/28709');
+		// Capture a message
+		$event_id = $client->getIdent($client->captureMessage($exception));
+		if ($client->getLastError() !== null) {
+		    Log::error('There was an error sending the event to Sentry: %s', $client->getLastError());
+		}	    	
+    }
+
+    return Response::view('errors.missing', array(), 404);
+});
+
 
 /*
 |--------------------------------------------------------------------------

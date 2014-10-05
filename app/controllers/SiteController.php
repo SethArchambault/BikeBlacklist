@@ -9,6 +9,7 @@ use Mail;
 use Log;
 use Whoops\Example\Exception;
 use Session;
+use Validator;
 
 class SiteController extends \BaseController {
 
@@ -72,7 +73,15 @@ class SiteController extends \BaseController {
 
     public function my_bike_is_missing()
     {
-        return View::make('site.my_bike_is_missing')->with('todays_date', date('m/d/Y'));
+        
+
+        return View::make('site.my_bike_is_missing')->with([
+            'description'   => Input::old('description'),
+            'lost_date'     => Input::old('lost_date') ? Input::old('lost_date') : date('m/d/Y'),
+            'email'         => Input::old('email'),
+            'lost_location' => Input::old('lost_location'),
+            'photo'         => Input::old('subfile')
+        ]);
     }
 
     public function more_details()
@@ -111,12 +120,36 @@ class SiteController extends \BaseController {
 
     public function store()
     {
-        // input
+        // get input
         $description = Input::get('description');
-        $lost_date = Input::get('lost_date');
+        $lost_date = Input::get('lost_date'); 
         $email = Input::get('email');
         $lost_location = Input::get('lost_location');
-        $photo_filename = Helper::SaveBikePhoto(Input::file('photo'), Config::get('app.file_dir'));
+        $photo_file = Input::file('photo');
+
+        // validate
+        $validator = Validator::make(
+            [
+                'description'   => $description,
+                'date'     => $lost_date,
+                'email'         => $email,
+                'location' => $lost_location,
+                'photo'         => $photo_file
+            ],
+            [
+                'description'   => ['required', 'max:140'],
+                'date'     => ['required', 'date'],
+                'email'         => ['required', 'email'],
+                'location' => ['required'],
+                'photo'         => ['required', 'image']
+            ]
+        );
+        if ($validator->fails()) {
+            return Redirect::to('/my-bike-is-missing')->withErrors($validator)->withInput();
+        } 
+
+
+        $photo_filename = Helper::SaveBikePhoto($photo_file, Config::get('app.file_dir'));
         // build unique id
 
         $desc_words= explode(" ", $description, 4);

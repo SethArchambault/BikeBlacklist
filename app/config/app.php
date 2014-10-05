@@ -17,6 +17,8 @@ return array(
 
     'dev_mode' => false,
 
+    'raven_errors' => true,
+
     'send_email' => true,
     
     'file_dir' => "uploads/",

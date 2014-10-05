@@ -15,10 +15,7 @@
     @section('header')
 
     @show
-	<script type="text/javascript">
-	    var _bftn_options = { animation: 'banner' }
-	</script>
-	<script src="//widget.battleforthenet.com/widget.min.js" async></script>
+
 </head>
 <body>
 <!--	<div id="announcement-bar">

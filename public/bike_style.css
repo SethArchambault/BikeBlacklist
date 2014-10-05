@@ -44,7 +44,7 @@ h1 {
 /* SHARE BAR */
 
 #div-share-bar {
-    margin:20px 0;
+    margin:0px 0 20px;
     background: #2b2b2b;
     padding: 20px 0;
     color:#ffffff;
@@ -59,6 +59,24 @@ h1 {
 #div-share {
     padding-bottom: 20px;
     font-size: 18px;
+}
+
+.share-social-link {
+    padding: 8px 6px;
+    font-size: 13px;
+    min-width:100%;
+}
+
+
+#map .leaflet-container {
+    cursor: hand;
+}
+
+#map .leaflet-popup-content {
+    color:#5F5F5F;
+}
+#map .leaflet-popup-pane {
+    opacity: .9;
 }
 
 @media (min-width: 768px) {

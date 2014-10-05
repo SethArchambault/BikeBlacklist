@@ -11,16 +11,7 @@
 |
 */
 
-App::error(function($exception) {
-    Log::error($exception);
-    return Response::view('errors.missing', array(), 500);
-});
 
-App::missing(function($exception)
-{
-    Log::error($exception);
-    return Response::view('errors.missing', array(), 404);
-});
 
 Route::get('/', array('as' => 'site.bikes', 'uses' => 'App\Controllers\SiteController@bikes'));
 Route::get('/found/{bike_id}', array('as' => 'site.found', 'uses' => 'App\Controllers\SiteController@found'));

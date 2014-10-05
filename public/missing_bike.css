@@ -26,3 +26,12 @@ h1 {
     color:#fff;
 }
 
+/* ERROR */
+
+.error_color {
+	color:#df2525;
+}
+
+.error_box {
+	padding-bottom:10px;	
+}
