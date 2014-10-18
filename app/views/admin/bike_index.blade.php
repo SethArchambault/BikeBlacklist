@@ -12,7 +12,8 @@
 		<table class="table table-bordered">
 			<tr>
 				<th>email</th>
-				<th>description</th>
+				<th>advice</th>
+				<th>serial_num</th>
 				<th>location</th>
 				<th>longitude</th>
 				<th></th>
@@ -21,7 +22,8 @@
 			@foreach ($bikes as $bike)
 			<tr>
 				<td>{{ $bike->email }}</td>
-				<td>{{ $bike->description }}</td>
+				<td>{{ $bike->advice }}</td>
+				<td>{{ $bike->serial_num }}</td>
 				<td>{{ $bike->lost_location }}</td>
 				<td>{{ $bike->lost_longitude }}</td>
 				<td><a href="/bike/{{ $bike->bike_uid }}" target="_blank">View</a></td>

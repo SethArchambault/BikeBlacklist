@@ -10,8 +10,15 @@ class BikeTest extends TestCase {
 		$this->assertResponseOk();
 	}
 
-	public function testMoreDetails() {
-		$this->call('GET', '/more-details');
+	public function testApi()
+	{
+		$this->call('GET', '/api/v1/bikes');
+		$this->assertResponseOk();
+	}
+
+	public function testGeoJson()
+	{
+		$this->call('GET', '/api/v1/geojson');
 		$this->assertResponseOk();
 	}
 

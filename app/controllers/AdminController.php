@@ -62,6 +62,7 @@ class AdminController extends BaseController {
         $bike->lock_type = Input::get('lock_type');
         $bike->lock_method = Input::get('lock_method');
         $bike->theft_desc = Input::get('theft_desc');
+        $bike->status = Input::get('status');
 
         $resave_photo = Input::get('resave_photo_check');
         if ($resave_photo == "on") {

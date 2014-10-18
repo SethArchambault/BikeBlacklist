@@ -3,7 +3,7 @@
 <html>
 <head>
     <link rel="shortcut icon" href="/favicon.ico">
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:300italic,400,700,900' rel='stylesheet' type='text/css'>
 	@section('title')
         <title>Detroit Bike Blacklist</title>
     @show

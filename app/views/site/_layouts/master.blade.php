@@ -11,7 +11,7 @@
 	<meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/lib/eternicode-datepicker/css/datepicker.css">
-    <link rel="stylesheet" type="text/css" href="/style.css">
+    <link rel="stylesheet" type="text/css" href="/style.css?v=1">
     @section('header')
 
     @show

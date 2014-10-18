@@ -5,8 +5,8 @@
 @stop
 
 @section('header')
-<link rel="stylesheet" type="text/css" href="/bike_style.css">
-
+<link rel="stylesheet" type="text/css" href="/bike_style.css?v=1">
+<link rel="stylesheet" type="text/css" href="/lib/font-awesome/css/font-awesome.min.css">
 <!-- for Google -->
 <meta name="description" content="{{ preg_replace('/[^A-Za-z0-9\- ]/', '', $bike->description) }}" />
 <meta name="keywords" content="detroit, mssing, stolen, bike, bicycle" />
@@ -45,8 +45,9 @@
                 <div id="bike-date">{{ date($date_format, strtotime($bike->lost_date)) }}</div>
 				<div id="bike-description">{{ $bike->description }}</div>
 		      	<div style="padding-bottom:10px;"></div>
-                <a href="#" class="btn-found-it foundItButtonJS text-center" data-dismiss="modal" data-toggle="modal" data-target="#foundItModal" data-bike-uid="{{ $bike->bike_uid }}" role="button">I FOUND IT</a>
-                
+                @if($bike->status != 1)
+                    <a href="#" class="btn-found-it foundItButtonJS text-center" data-dismiss="modal" data-toggle="modal" data-target="#foundItModal" data-bike-uid="{{ $bike->bike_uid }}" role="button">I FOUND IT</a>
+                @endif             
 			</div>
 			<div class="col-sm-7">
                 <img id="bike-image" class="img-responsive" src="/uploads/large/{{ $bike->photo }}">
@@ -70,14 +71,13 @@
                     <div id="div-share">
                         <p>Share this link with everyone you know:</p>
                         <div class="row">
-                            <div class="col-sm-7 col-xs-12" style="padding-bottom:15px;">
+                            <div class="col-xs-12 col-sm-9" style="padding-bottom:10px;">
                                 <input type="text" id="copypath" class="form-control" value="http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}">
                             </div>
-                            <div class="col-sm-2 col-xs-6">
-                                <a class="btn btn-primary share-social-link" target=_blank href="https://www.facebook.com/sharer/sharer.php">Share on Facebook</a> 
-                            </div>
-                            <div class="col-sm-2 col-xs-6">
-                                <a target=_blank class="btn btn-primary share-social-link" href="https://twitter.com/home?status=Help!%20My%20bike%20has%20been%20stolen!%20Will%20you%20keep%20an%20eye%20out%20for%20it?%20http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}">Share on Twitter</a> <!-- <a class="btn btn-primary" href="http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}">Direct Link</a>-->
+                            <div class="col-xs-12 col-sm-3">
+                                <a target=_blank class="btn btn-primary share-social-link" href="https://www.facebook.com/sharer/sharer.php?src=sp&u=http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}"><span class="fa fa-facebook fa-lg"></span></a> 
+                                <a target=_blank class="btn btn-primary share-social-link" href="https://twitter.com/home?status=Help!%20My%20bike%20has%20been%20stolen!%20Will%20you%20keep%20an%20eye%20out%20for%20it?%20http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}"><span class="fa fa-twitter fa-lg"></span></a> <!-- <a class="btn btn-primary" href="http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}">Direct Link</a>-->
+                                <a target=_blank class="btn btn-primary share-social-link" href="/print/{{ $bike->bike_uid }}"><span class="fa fa-print fa-lg"></span></a> 
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,8 @@
             </div>
         </div>
     </div> <!-- /.div-share-bar -->
-    <div class="container">
+    @if (!empty($bike->advice))
+    <div class="container" style="padding-top:20px">
         <div class="row" style="padding:40px 0 50px;">
             <div class="col-sm-6">
                 <h1>Lessons Learned</h1>
@@ -95,7 +96,7 @@
             </div>
         </div>
     </div>
-
+    @endif
 	@include('site._partials.foundit_modal')
 
     @section('footer')
@@ -133,11 +134,8 @@
                 map.scrollWheelZoom.disable();
                 map.boxZoom.disable();
                 map.keyboard.disable();
-                map.attributionControl.setPrefix('');
-                var popup = L.popup({closeButton:true})
-                    .setLatLng([latitude, longitude])
-                    .setContent("Last seen @ <b>{{ ucwords($bike->lost_location) }}</b>");
-                marker.bindPopup(popup)
+                map.attributionControl.setPrefix('{{$bike->lost_neighborhood}}');
+                marker.bindPopup("Last seen @ <b>{{ ucwords($bike->lost_location) }}</b>");
 
 
                 var layer = L.tileLayer('http://{s}.tiles.mapbox.com/v3/doercreator.j6n1l8fo/{z}/{x}/{y}.png', {

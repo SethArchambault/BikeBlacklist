@@ -5,27 +5,21 @@
 @stop
 
 @section('header')
-<link rel="stylesheet" type="text/css" media="all" href="/bike_style.css">
-
+<link rel="stylesheet" type="text/css" media="all" href="/bike_print.css">
+@stop
 @section('main')
 
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-                <div class="text-center">
-                    <h1 style="margin:0;">MISSING BIKE</h1>
-                <div id="bike-description" class="text-center">{{ $bike->description }}</div>
-
-
-                    <img style="padding-top:0;" id="bike-image" src="/uploads/large/{{ $bike->photo }}">
-                </div>
-                    <div class="text-center" style="font-size:20px;">
-                    Report Sightings to the Owner:<Br>http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}
-                  </div>
-
-        	</div>
-		</div> <!-- /.row -->
-    </div> <!-- /.container -->
+<h1 class="print_page_width">MY BIKE IS MISSING!</h1>
+<div id="bike-description" class="print_page_width">{{ $bike->description }}</div>
+<div class="print_page_width bike_image_div">
+<img id="bike-image" src="/uploads/large/{{ $bike->photo }}">
+</div>
+<div class="print_page_width footer_box footer_text">
+<div class="footer_bike_image_div"><img src="/images/x_bike.png" width=60></div>
+<span class="footer_bold_text">Find it? Report it!</span> (<span class="footer_italic_text">It only takes 5 seconds</span>)</i><br>
+<div class="footer_bike_link">http://detroitbikeblacklist.com/bike/{{ $bike->bike_uid }}</div>
+<div class="clear"></div>
+</div>
 
 
 @stop

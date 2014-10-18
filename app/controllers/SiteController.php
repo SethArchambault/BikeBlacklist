@@ -18,7 +18,7 @@ class SiteController extends \BaseController {
     public function bikes()
     {
             return View::make('site.bikes')
-                ->with('bikes', Bike::orderby('lost_date', 'desc')->orderBy('created_at', 'desc')->get());
+                ->with('bikes', Bike::orderby('lost_date', 'desc')->where('status', '<', 2)->orderBy('created_at', 'desc')->limit(40)->get());
     }
 
     /* BIKE */
@@ -186,7 +186,8 @@ class SiteController extends \BaseController {
         // send welcome email
 
         $data['bike_owner_email'] = $bike->email;
-        $data['url'] = "http://detroitbikeblacklist.com/bike/". $bike->bike_uid;
+        $data['url'] = $_SERVER['SERVER_NAME'] . "/bike/". $bike->bike_uid;
+        $data['admin_url'] = $_SERVER['SERVER_NAME'] . "/admin/bike_edit/" . $bike->id;
 
         // check if this is being run locally
         if (Config::get('app.send_email')) {

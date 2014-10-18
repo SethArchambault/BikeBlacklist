@@ -60,5 +60,6 @@ Route::group(['prefix' => 'api/v1'], function() {
 	Route::get('/', function() {
 		return Response::json(["status" => "error", "message" => "Nothing here. You're very close though."]);
 	});
+	Route::get('/geojson', ['uses' => 'ApiController@geojson']);
 	Route::resource('bikes', 'ApiController');
 });

@@ -38,4 +38,36 @@ class Helper
 
         return $filename['basic'];
     }
+
+    public static function GeoJson($original_data) 
+    {
+        $features = array();
+        foreach($original_data as $key => $value) { 
+            $features[] = [
+                'type' => 'Feature',
+                'geometry' => [
+                    'type' => 'Point', 
+                    'coordinates' => [
+                        (float)$value['lost_latitude'],
+                        (float)$value['lost_longitude']
+                    ]
+                ],
+                'properties' => [
+                    'id' => $value['id'],
+                    'bike_uid' => $value['bike_uid'],
+                    'description' => $value['description'],
+                    'photo' => $value['photo'],
+                    'lost_date' => $value['lost_date'],
+                    'lost_latitude' => $value['lost_latitude'],
+                    'lost_longitude' => $value['lost_longitude'],
+                    'advice' => $value['advice'],
+                    'created_at' => $value['created_at']
+                ],
+            ];
+        };   
+
+        $allfeatures = array('type' => 'FeatureCollection', 'features' => $features);
+        return $allfeatures;
+
+    }
 }

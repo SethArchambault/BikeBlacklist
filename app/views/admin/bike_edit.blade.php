@@ -10,6 +10,9 @@
 						{{ $bike->id }}
 					</div>				
 					<div class="form-group">
+						<a href="/admin/bike_delete/{{ $bike->id }}" id="delete-bike-js" class="btn">Delete this Bike</a>
+					</div>
+					<div class="form-group">
 					<label>bike_uid</label>
 					{{ $bike->bike_uid }}
 					</div>				
@@ -19,7 +22,7 @@
 					</div> <!-- /.form-group -->
 					<div class="form-group">
 					<label>status</label>
-					{{ $bike->status }}
+					<input type="text" class="form-control" name="status" value="{{ $bike->status }}">
 					</div>				
 					<div class="form-group">
 					<label>photo</label><br>
@@ -175,6 +178,14 @@
 @section('footer')
 <script type="text/javascript">
 	$(function() {
+
+		$('#delete-bike-js').click(function(event) {
+		    event.preventDefault();
+			var choice = confirm("Are you sure you want to delete this bike?");
+			if (choice) {
+		        window.location.href = $(this).attr('href');
+		    }
+		});
 	$('#subbutton').click(function() {
 		alert('subbutton click');
 		$('#photo').click();

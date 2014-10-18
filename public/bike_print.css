@@ -1,0 +1,69 @@
+body {
+    -webkit-print-color-adjust: exact;
+}
+
+.print_page_width {
+    width:800px;
+    margin: 0 auto;
+}
+
+.bike_image_div {
+    padding-bottom:50px;
+}
+
+.footer_box {
+    background:#f5f5f5 !important;
+    padding:32px 50px;
+    -webkit-print-color-adjust: exact;
+}
+
+.footer_text {
+    font-size:26px;
+    color:#636363 !important;
+}
+
+.footer_bike_image_div {
+    float:left;
+    padding-right:15px;
+    margin-top:-5px;
+}
+
+.footer_bike_link {
+    clear:both;
+}
+
+.footer_bold_text {
+    color:#373737 !important;
+    font-weight:bold;
+}
+.footer_italic_text {
+    font-weight:300;
+    font-style: italic;
+}
+
+h1 {
+    margin-top:10px;
+    font-size:80px;
+    color:#404040 !important;
+}
+
+#bike-image {
+    padding-top: 18px;
+}
+
+#bike-date {
+    font-size: 22px;
+}
+@media (min-width: 768px) {
+    #bike-date {
+        font-size: 30px;
+    }
+}
+
+#bike-description {
+    font-size: 27px;
+    color:#707070 !important;
+    padding:10px 0 15px;
+}
+
+
