@@ -297,12 +297,36 @@ class SiteController extends \BaseController {
     public function mail_feedback()
     {
 
-        $input_message = Input::get('message');
-        $data['content'] = $input_message;
+        $message = Input::get('message');
+        $email = Input::get('email');
+
+        // validate
+        $validator = Validator::make(
+            [
+                'message'   => $message,
+                'email'     => $email
+            ],
+            [
+                'message'   => ['required'],
+                'email'         => ['required', 'email']
+            ]
+        );
+        if ($validator->fails()) {
+            return Redirect::to('/feedback#contact-me')->withErrors($validator)->withInput();
+        } 
+
+        $data['message_to_me'] = $message; 
+        $data['email'] = $email;
+        $data['useragent'] = $_SERVER['HTTP_USER_AGENT'];
+        if (Config::get('app.send_email')) {
             Mail::send('emails.feedback', $data, function($message)
             {
                     $message->to('feedback@detroitbikeblacklist.com', 'Feedback Detroit Bike Blacklist')->subject('Feedback for the Blikelist!');
             });
+        } else {
+            // debug only
+            return View::make('emails.feedback')->with($data); 
+        }
 
             return Redirect::route('site.bikes')->with('message', 'Message Sent! Thanks!');
     }

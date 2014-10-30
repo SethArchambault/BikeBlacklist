@@ -48,8 +48,8 @@ class Helper
                 'geometry' => [
                     'type' => 'Point', 
                     'coordinates' => [
-                        (float)$value['lost_latitude'],
-                        (float)$value['lost_longitude']
+                        (float)$value['lost_longitude'],
+                        (float)$value['lost_latitude']
                     ]
                 ],
                 'properties' => [
@@ -58,8 +58,7 @@ class Helper
                     'description' => $value['description'],
                     'photo' => $value['photo'],
                     'lost_date' => $value['lost_date'],
-                    'lost_latitude' => $value['lost_latitude'],
-                    'lost_longitude' => $value['lost_longitude'],
+                    'theft_desc' => $value['theft_desc'],
                     'advice' => $value['advice'],
                     'created_at' => $value['created_at']
                 ],

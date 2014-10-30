@@ -26,11 +26,38 @@
     </div>
     {{ Form::open(['route' => 'site.mail_feedback', 'files' => true, 'role' => 'form']) }}
     <h2 id="contact-me">Send Me a Message</h2>
+    @if(!$errors->isEmpty())
+        <div class="error_color">
+            Oops - looks like there's some issues! Fix em below to continue.
+        </div>
+    @endif
     <p>I read each and every one of these. Leave your email if you want me to get back with you. (Definitely do this if you're having any trouble!)</p>
     <div class="form-group">
         <div class="row">
+             @if(!empty($errors) && $errors->get('message'))
+                <div class="error_box error_color">
+                    @foreach ($errors->get('message') as $error_message)                
+                        <span class="glyphicon glyphicon-exclamation-sign"></span> {{ $error_message }}</li>
+                    @endforeach
+                </div>
+            @endif
             <div class="col-sm-8 col-md-7 col-lg-6">
                 {{ Form::textarea('message', '',  ['id' => '', 'class' => 'form-control',  'rows' => 8, 'placeholder' => '']) }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+
+             @if(!empty($errors) && $errors->get('email'))
+                <div class="error_box error_color">
+                    @foreach ($errors->get('email') as $error_message)                
+                        <span class="glyphicon glyphicon-exclamation-sign"></span> {{ $error_message }}</li>
+                    @endforeach
+                </div>
+            @endif
+            <div class="col-sm-8 col-md-7 col-lg-6">
+                {{ Form::text('email', '',  ['id' => '', 'class' => 'form-control',  'rows' => 8, 'placeholder' => 'Email']) }}
             </div>
         </div>
     </div>

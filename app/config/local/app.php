@@ -1,7 +1,8 @@
 <?php
 
 return array(
+	'debug' => true,
 	'dev_mode' => false,
-    'send_email' => true,
+    'send_email' => false,
     'raven_errors' => true
 );

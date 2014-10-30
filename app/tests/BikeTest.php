@@ -35,4 +35,10 @@ class BikeTest extends TestCase {
 
 	}
 
+	public function testFeedback()
+	{
+		$this->call('GET', '/feedback');
+		$this->assertResponseOk();	
+	}
+
 }
