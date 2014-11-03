@@ -14,3 +14,5 @@ www-bikeblacklist.sublime-project
 www-bikeblacklist.sublime-workspace
 sync_stage
 sync_vendor_stage.sh
+app/config/packages/sammyk/laravel-facebook-sdk/config.php
+app/config/packages/thujohn/twitter/config.php

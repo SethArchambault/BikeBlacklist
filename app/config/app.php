@@ -120,7 +120,9 @@ return array(
         'Cartalyst\Sentry\SentryServiceProvider',
         'RobBrazier\Piwik\PiwikServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Intervention\Image\ImageServiceProvider'
+        'Intervention\Image\ImageServiceProvider',
+        'Thujohn\Twitter\TwitterServiceProvider',
+        'SammyK\LaravelFacebookSdk\LaravelFacebookSdkServiceProvider'
     ),
 
     /*
@@ -188,7 +190,9 @@ return array(
         'View' => 'Illuminate\Support\Facades\View',
         'Sentry' => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
         'Piwik' => 'RobBrazier\Piwik\Facades\Piwik',
-        'Image' => 'Intervention\Image\Facades\Image'
+        'Image' => 'Intervention\Image\Facades\Image',
+        'Twitter' => 'Thujohn\Twitter\TwitterFacade',
+        'Facebook' => 'SammyK\LaravelFacebookSdk\FacebookFacade'
     ),
 
 );

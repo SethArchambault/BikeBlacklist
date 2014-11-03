@@ -31,7 +31,7 @@
             Oops - looks like there's some issues! Fix em below to continue.
         </div>
     @endif
-    <p>I read each and every one of these. Leave your email if you want me to get back with you. (Definitely do this if you're having any trouble!)</p>
+    <p>I read each and every one of these.</p>
     <div class="form-group">
         <div class="row">
              @if(!empty($errors) && $errors->get('message'))
@@ -42,7 +42,7 @@
                 </div>
             @endif
             <div class="col-sm-8 col-md-7 col-lg-6">
-                {{ Form::textarea('message', '',  ['id' => '', 'class' => 'form-control',  'rows' => 8, 'placeholder' => '']) }}
+                {{ Form::textarea('message', '',  ['id' => '', 'class' => 'form-control',  'rows' => 8, 'placeholder' => 'Message']) }}
             </div>
         </div>
     </div>

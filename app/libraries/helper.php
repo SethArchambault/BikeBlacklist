@@ -69,4 +69,8 @@ class Helper
         return $allfeatures;
 
     }
+
+    public static function PostTwitter($original_data) {
+        return array('error' => false, 'message' => 'Twitter posting has not been setup');
+    }
 }

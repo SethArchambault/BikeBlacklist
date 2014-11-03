@@ -1,6 +1,7 @@
 <?php 
 
 use App\Models\Bike;
+use Helper\Helper;
 
 class BikeTest extends TestCase {
 	
@@ -41,4 +42,17 @@ class BikeTest extends TestCase {
 		$this->assertResponseOk();	
 	}
 
+	public function testTwitterPost()
+	{
+		$return_data = Helper::PostTwitter('');
+		$this->assertTrue($return_data['error'], $return_data['message']);
+	}
+
 }
+
+/* example
+		$crawler = $this->client->request('GET', '/');
+
+		$this->assertTrue($this->client->getResponse()->isOk());
+
+*/

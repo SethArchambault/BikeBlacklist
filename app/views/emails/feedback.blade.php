@@ -1,5 +1,5 @@
-Message: {{ $message_to_me }}
+Message: {{ $message_to_me }}<br><br>
 
-From: {{ $email }}
+From: {{ $email }}<br><br>
 
 UserAgent: {{ $useragent }}
