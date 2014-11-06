@@ -3,6 +3,7 @@
 use App\Models\Bike;
 use Helper\Helper;
 
+
 class BikeTest extends TestCase {
 	
 	public function testBike()
@@ -44,8 +45,19 @@ class BikeTest extends TestCase {
 
 	public function testTwitterPost()
 	{
-		$return_data = Helper::PostTwitter('');
-		$this->assertTrue($return_data['error'], $return_data['message']);
+		$return_data = Helper::PostTwitter('Soon bikes will automatically be posted here - working on the API for that now.', true);
+
+		$this->assertTrue(!$return_data['error'], $return_data['message']);
+		if (!$return_data['error']) {
+			$post_id = $return_data['message']['id'];
+			Twitter::destroyTweet($post_id);
+		}
+	}
+
+	public function testFacebookPost()
+	{
+		$return_data = Helper::PostFacebook('');
+		$this->assertTrue(!$return_data['error'], $return_data['message']);
 	}
 
 }

@@ -77,6 +77,7 @@ return array(
     */
 
     'key' => 'y6oL5zW3UWPf3h8KkDCc2vhqJxpdsnsD',
+    'blacklist_key' => 'EGmbKRhEpgl5vf^9rupf$ohuiRSbPV2Z&A2ib2L9',
 
     /*
     |--------------------------------------------------------------------------

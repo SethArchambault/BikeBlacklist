@@ -4,6 +4,7 @@ namespace Helper;
 
 use Image;
 use Whoops\Example\Exception;
+use Twitter;
 
 class Helper
 {
@@ -70,7 +71,32 @@ class Helper
 
     }
 
+    public static function isJson($string) {
+        json_decode($string);
+        return (json_last_error() == JSON_ERROR_NONE);
+    }
+
     public static function PostTwitter($original_data) {
-        return array('error' => false, 'message' => 'Twitter posting has not been setup');
+        try {
+            $response_json = Twitter::postTweet(['status' => $original_data, 'format' => 'json']);
+        } catch (Exception $e) {
+            return ['error' => true, 'message' => "EXCEPTION", $raw => $e];
+        }
+        if (!Helper::isJson($response_json)) {
+            return ['error' => true, 'message' => "No JSON Response.", 'raw' => $response_json];
+        }
+
+        $response_array = json_decode($response_json, true);
+
+        if (isset($response_array['errors'])) {
+            return ['error' => true, 'message' => 'Errors from twitter. ' . print_r($response_array['errors'], true)];
+        }
+
+        return ['error' => false, 'message' => $response_array];
+        // returns this result https://dev.twitter.com/rest/reference/post/statuses/update
+    }
+
+    public static function PostFacebook($original_data) {
+        return ['error' => true, 'message' => 'Facebook posting has not been setup'];
     }
 }

@@ -120,6 +120,8 @@ class SiteController extends \BaseController {
 
     public function store()
     {
+        $timer['start'] = microtime(true);
+
         // get input
         $description = Input::get('description');
         $lost_date = Input::get('lost_date'); 
@@ -170,6 +172,7 @@ class SiteController extends \BaseController {
             }
             Log::info("SiteController.php - function store() - Successfully created bike_uid '$bike_uid'");
         }
+        $url = 'http://' . $_SERVER['SERVER_NAME'] . "/bike/". $bike_uid;
 
         $bike = new Bike;
         $bike->description = $description;
@@ -182,11 +185,12 @@ class SiteController extends \BaseController {
         $bike->found_key = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 1).substr(md5(time()),1);
         $bike->save();
 
-        
+        $timer['db'] = microtime(true) - $timer['start'];
+        // queue this        
         // send welcome email
 
         $data['bike_owner_email'] = $bike->email;
-        $data['url'] = $_SERVER['SERVER_NAME'] . "/bike/". $bike->bike_uid;
+        $data['url'] = $url;
         $data['admin_url'] = $_SERVER['SERVER_NAME'] . "/admin/bike_edit/" . $bike->id;
 
         // check if this is being run locally
@@ -204,7 +208,7 @@ class SiteController extends \BaseController {
                     $message->to('hellofriend@detroitbikeblacklist.com', 'Seth Archambault')->subject('Sorry about your bike');
             });
         }
-
+        $timer['mail'] = microtime(true) - $timer['db'];
 
         if (!is_int($bike->id)) {
             Log::error("bike->id is not int - it is ". $bike->id . " something is wrong, probably not saved correctly");
@@ -213,7 +217,38 @@ class SiteController extends \BaseController {
 
         Session::put('bike_id', $bike->id);
 
-        return Redirect::to('/more-details')->with('message', "Your bike has been reported!<br>Check your email for next steps. Thanks!");
+        // queue this
+        // post to twitter
+        $twitter_front = 'Missing Bike - ';
+        $twitter_back = ' ' . $data['url'];
+        $chars_left = 140 - (strlen($twitter_front) + strlen($twitter_back));
+        $twitter_middle = (strlen($description) < $chars_left) ? $description : substr($description, 0, $chars_left - 3) . "...";
+        $twitter_post = $twitter_front . $twitter_middle . $twitter_back;
+        $return_data = Helper::PostTwitter($twitter_post);
+        if ($return_data['error']) {
+            Log::error("Post to Twitter Error: " . $return_data['message']);
+        }
+
+        $timer['twitter'] = microtime(true) - $timer['mail'];
+
+        // post to facebook
+        
+        $timer['facebook'] = microtime(true) - $timer['twitter'];
+
+        $timer['total'] = microtime(true) - $timer['start'];
+
+        return Redirect::to('/more-details')->with([
+            'message' => "Your bike has been reported!<br>Check your email for next steps. Thanks!",
+            'timer' => $timer
+            ]);
+
+    }
+
+    public function post_tweet() {
+
+    }
+
+    public function post_facebook() {
 
     }
 

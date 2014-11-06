@@ -18,6 +18,7 @@
         <div class="row">
         <p class="col-sm-9">If you have 3 more minutes here’s some other fields that will help get your bike back!<!--<br>You don’t have to do them all now, you can always fill this out later. --></p>
         </div>
+        {{-- var_dump(Session::get('timer')) --}}
         {{ Form::open(['route' => 'site.store_more_details', 'files' => true, 'role' => 'form']) }}
             <div class="form-group">
                 <label for="description">Where was your bike placed?</label>
