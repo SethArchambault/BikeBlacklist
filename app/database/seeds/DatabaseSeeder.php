@@ -31,7 +31,6 @@ class ContentSeeder extends Seeder {
     {
         DB::table('bikes')->delete();
  
- 
     }
  
 }
@@ -43,10 +42,11 @@ class SentrySeeder extends Seeder {
     public function run()
     {
         DB::table('users')->delete();
-        DB::table('groups')->delete();
-        DB::table('users_groups')->delete();
+        // DB::table('groups')->delete();
+        // DB::table('users_groups')->delete();
  
         // Assign user permissions
+
     }
  
 }

@@ -18,7 +18,7 @@ class SiteController extends \BaseController {
     public function bikes()
     {
             return View::make('site.bikes')
-                ->with('bikes', Bike::orderby('lost_date', 'desc')->where('status', '<', 2)->orderBy('created_at', 'desc')->limit(40)->get());
+                ->with('bikes', Bike::orderby('lost_date', 'desc')->where('status', '<', 2)->where('featured', 1)->orderBy('created_at', 'desc')->limit(40)->get());
     }
 
     /* BIKE */
